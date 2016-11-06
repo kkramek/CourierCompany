@@ -49,5 +49,5 @@ public:
 	CString userDataMoney;
 	CString userDataTime;
 	void StartGame();
-	void SetHeaderUserData();
+	static UINT SetHeaderUserData(LPVOID pParam);
 };

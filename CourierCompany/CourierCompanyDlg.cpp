@@ -71,6 +71,8 @@ BOOL CCDlg::OnInitDialog()
 
 	m_tabMenu.Init();
 
+	AfxBeginThread(SetHeaderUserData, (LPVOID)this);
+
 	return TRUE;  // return TRUE  unless you set the focus to a control
 }
 
@@ -125,11 +127,14 @@ void CCDlg::StartGame()
 	game->SetPlayer(userName);
 }
 
-void CCDlg::SetHeaderUserData()
+
+UINT CCDlg::SetHeaderUserData(LPVOID pParam)
 {
-	string playerName, playerLvl;
+	CCDlg *dlg = (CCDlg*)pParam;
+	string playerName;
+	int playerLvl;
 	float playerAccountBalance;
-	CString pName, pLvl;
+	CString pName, pLvl, pAccountBalance;
 
 	Game* game;
 	Player* player;
@@ -140,10 +145,17 @@ void CCDlg::SetHeaderUserData()
 	playerLvl = player->getLevel();
 	playerAccountBalance = player->getAccountBalance();
 
-	pName = Library::ConvertStringToCString(playerName);
+	pName = Library::ConvertStringToCString("Nick: " + playerName);
+	pLvl = Library::ConvertStringToCString("Level: " + to_string(playerLvl));
+	pAccountBalance = Library::ConvertStringToCString("Account balance: " + to_string(playerAccountBalance));
 
-	playerDataName.SetWindowTextW(pName);
+	dlg->GetDlgItem(ID_RECORD_NEXT)->SetWindowText(pName);
+	dlg->GetDlgItem(ID_WINDOW_NEW)->SetWindowText(pLvl);
+	dlg->GetDlgItem(ID_WINDOW_SPLIT)->SetWindowText(pAccountBalance);
+	
+	return 0;
 }
+
 
 
 
