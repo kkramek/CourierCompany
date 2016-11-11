@@ -1,4 +1,6 @@
 #pragma once
+#include "afxwin.h"
+#include "afxcmn.h"
 
 
 // CTabGarage dialog
@@ -18,4 +20,8 @@ protected:
 	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV support
 
 	DECLARE_MESSAGE_MAP()
+public:
+	CListBox vehicleListBox;
+	void CompleteVehicleList();
+	CListCtrl vehicleListCtrl;
 };

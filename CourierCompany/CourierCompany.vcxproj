@@ -101,7 +101,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Courier.h" />
+    <ClInclude Include="Vehicle.h" />
     <ClInclude Include="CourierCompany.h" />
     <ClInclude Include="CourierCompanyDlg.h" />
     <ClInclude Include="Game.h" />
@@ -116,9 +116,10 @@
     <ClInclude Include="TabMenu.h" />
     <ClInclude Include="TabWarehouse.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="VehicleLibrary.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Courier.cpp" />
+    <ClCompile Include="Vehicle.cpp" />
     <ClCompile Include="CourierCompany.cpp" />
     <ClCompile Include="CourierCompanyDlg.cpp" />
     <ClCompile Include="Game.cpp" />
@@ -134,6 +135,7 @@
     <ClCompile Include="TabMap.cpp" />
     <ClCompile Include="TabMenu.cpp" />
     <ClCompile Include="TabWarehouse.cpp" />
+    <ClCompile Include="VehicleLibrary.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="CourierCompany.rc" />

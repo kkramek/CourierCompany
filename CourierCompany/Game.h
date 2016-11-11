@@ -1,6 +1,6 @@
 #pragma once
 #include "Player.h"
-#include "Courier.h"
+#include "Vehicle.h"
 #include <string>
 #include <iostream>
 
@@ -19,7 +19,7 @@ public:
 private:
 	static Game *instance;
 	Player* player;
-	Courier	courier;
+	//Vehicle	vehicle;
 
 };
 

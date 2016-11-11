@@ -131,7 +131,7 @@ void CCDlg::StartGame()
 UINT CCDlg::SetHeaderUserData(LPVOID pParam)
 {
 	CCDlg *dlg = (CCDlg*)pParam;
-	string playerName;
+	string playerName, zm;
 	int playerLvl;
 	float playerAccountBalance;
 	CString pName, pLvl, pAccountBalance;
@@ -140,10 +140,12 @@ UINT CCDlg::SetHeaderUserData(LPVOID pParam)
 	Player* player;
 	game = Game::getInstance();
 	player = game->GetPlayer();
-
+	
 	playerName = player->getName();
 	playerLvl = player->getLevel();
 	playerAccountBalance = player->getAccountBalance();
+
+	zm = to_string(playerLvl);
 
 	pName = Library::ConvertStringToCString("Nick: " + playerName);
 	pLvl = Library::ConvertStringToCString("Level: " + to_string(playerLvl));
@@ -155,10 +157,6 @@ UINT CCDlg::SetHeaderUserData(LPVOID pParam)
 	
 	return 0;
 }
-
-
-
-
 
 
 
