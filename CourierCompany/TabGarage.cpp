@@ -26,11 +26,10 @@ CTabGarage::~CTabGarage()
 void CTabGarage::DoDataExchange(CDataExchange* pDX)
 {
 	CDialogEx::DoDataExchange(pDX);
-	DDX_Control(pDX, IDC_LIST2, vehicleListBox);
 	DDX_Control(pDX, IDC_LIST1, vehicleListCtrl);
 
-	vehicleListCtrl.InsertColumn(0, _T("Car Name"), LVCFMT_LEFT, 90);
-	vehicleListCtrl.InsertColumn(1, _T("Price"), LVCFMT_LEFT, 90);
+	vehicleListCtrl.InsertColumn(0, _T("Car Name"), LVCFMT_LEFT, 105);
+	vehicleListCtrl.InsertColumn(1, _T("Price"), LVCFMT_RIGHT, 95);
 
 	this->CompleteVehicleList();
 	
@@ -38,6 +37,7 @@ void CTabGarage::DoDataExchange(CDataExchange* pDX)
 
 
 BEGIN_MESSAGE_MAP(CTabGarage, CDialogEx)
+	ON_BN_CLICKED(IDC_BUTTON1, &CTabGarage::BuyChangeClick)
 END_MESSAGE_MAP()
 
 
@@ -59,4 +59,10 @@ void CTabGarage::CompleteVehicleList()
 
 	}
 
+}
+
+
+void CTabGarage::BuyChangeClick()
+{
+	int nSelectedItem = vehicleListCtrl.GetNextItem(-1, LVNI_SELECTED);
 }

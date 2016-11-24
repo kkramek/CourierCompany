@@ -21,7 +21,7 @@ protected:
 
 	DECLARE_MESSAGE_MAP()
 public:
-	CListBox vehicleListBox;
 	void CompleteVehicleList();
 	CListCtrl vehicleListCtrl;
+	afx_msg void BuyChangeClick();
 };

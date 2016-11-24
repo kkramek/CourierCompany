@@ -1,4 +1,4 @@
-﻿Build started 11-Nov-16 10:08:54.
+﻿Build started 24-Nov-16 18:34:37.
      1>Project "C:\Users\KKramek\Desktop\CourierCompany\CourierCompany\CourierCompany.vcxproj" on node 2 (Build target(s)).
      1>ResourceCompile:
          C:\Program Files (x86)\Windows Kits\8.1\bin\x86\rc.exe /D _DEBUG /D _UNICODE /D UNICODE /D _AFXDLL /l"0x0409" /IDebug\ /nologo /fo"Debug\CourierCompany.res" CourierCompany.rc 
@@ -23,4 +23,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:00.70
+Time Elapsed 00:00:00.62
