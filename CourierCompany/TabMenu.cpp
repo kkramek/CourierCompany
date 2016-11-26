@@ -51,29 +51,29 @@ void CTabMenu::Init()
 	m_tabPages[1]->ShowWindow(SW_HIDE);
 	m_tabPages[2]->ShowWindow(SW_HIDE);
 
-	SetRectengle();
+//	SetRectengle();
 }
 
 
-void CTabMenu::SetRectengle(void)
-{
-	CRect tabRect, itemRect;
-	int nX, nY, nXc, nYc;
-
-	GetClientRect(&tabRect);
-	GetItemRect(0, &itemRect);
-
-	nX = itemRect.left;
-	nY = itemRect.bottom + 1;
-	nXc = tabRect.right - itemRect.left - 1;
-	nYc = tabRect.bottom - nY - 1;
-
-	m_tabPages[0]->SetWindowPos(&wndTop, nX, nY, nXc, nYc, SWP_SHOWWINDOW);
-
-	for (int nCount = 1; nCount < m_nNumberOfPages; nCount++) {
-		m_tabPages[nCount]->SetWindowPos(&wndTop, nX, nY, nXc, nYc, SWP_HIDEWINDOW);
-	}
-}
+//void CTabMenu::SetRectengle(void)
+//{
+//	CRect tabRect, itemRect;
+//	int nX, nY, nXc, nYc;
+//
+//	GetClientRect(&tabRect);
+//	GetItemRect(0, &itemRect);
+//
+//	nX = itemRect.left;
+//	nY = itemRect.bottom + 1;
+//	nXc = tabRect.right - itemRect.left - 1;
+//	nYc = tabRect.bottom - nY - 1;
+//
+//	m_tabPages[0]->SetWindowPos(&wndTop, nX, nY, nXc, nYc, SWP_SHOWWINDOW);
+//
+//	for (int nCount = 1; nCount < m_nNumberOfPages; nCount++) {
+//		m_tabPages[nCount]->SetWindowPos(&wndTop, nX, nY, nXc, nYc, SWP_HIDEWINDOW);
+//	}
+//}
 
 
 void CTabMenu::OnLButtonDown(UINT nFlags, CPoint point)
