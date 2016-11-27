@@ -1,6 +1,10 @@
 #pragma once
 #include "afxwin.h"
 #include "afxcmn.h"
+#include "VehicleLibrary.h"
+#include "Vehicle.h"
+#include "Library.h"
+#include "Game.h"
 
 
 // CTabGarage dialog
@@ -22,6 +26,8 @@ protected:
 	DECLARE_MESSAGE_MAP()
 public:
 	void CompleteVehicleList();
+	void AppendPlayerVehicleList(string vehicleName);
 	CListCtrl vehicleListCtrl;
 	afx_msg void BuyChangeClick();
+	CListBox playerVehicleList;
 };

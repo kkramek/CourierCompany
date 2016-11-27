@@ -5,9 +5,6 @@
 #include "CourierCompany.h"
 #include "TabGarage.h"
 #include "afxdialogex.h"
-#include "VehicleLibrary.h"
-#include "Vehicle.h"
-#include "Library.h"
 
 
 // CTabGarage dialog
@@ -32,7 +29,8 @@ void CTabGarage::DoDataExchange(CDataExchange* pDX)
 	vehicleListCtrl.InsertColumn(1, _T("Price"), LVCFMT_RIGHT, 95);
 
 	this->CompleteVehicleList();
-	
+
+	DDX_Control(pDX, IDC_LIST3, playerVehicleList);
 }
 
 
@@ -64,5 +62,28 @@ void CTabGarage::CompleteVehicleList()
 
 void CTabGarage::BuyChangeClick()
 {
+	Game *game;
+	Player *player;
+	Vehicle* vehicle;
+	vector < Vehicle* > vehicleList;
+	VehicleLibrary* vehicleLibrary = new VehicleLibrary();
+	vehicleList = vehicleLibrary->GetVehicleList();
+
 	int nSelectedItem = vehicleListCtrl.GetNextItem(-1, LVNI_SELECTED);
+
+	if (nSelectedItem != -1) {
+
+		vehicle = vehicleList[nSelectedItem];
+
+		game = Game::getInstance();
+		player = game->GetPlayer();
+		player->appendVehicle(vehicle);
+
+		this->AppendPlayerVehicleList(vehicle->GetName());
+	}
+}
+
+void CTabGarage::AppendPlayerVehicleList(string vehicleName)
+{
+	playerVehicleList.AddString(Library::ConvertStringToCString(vehicleName));
 }

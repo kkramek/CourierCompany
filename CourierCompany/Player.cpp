@@ -14,6 +14,16 @@ Player::~Player()
 {
 }
 
+void Player::appendVehicle(Vehicle *vehicle)
+{
+	this->vehicleList.push_back(vehicle);
+}
+
+vector < Vehicle* > Player::GetVehicleList()
+{
+	return this->vehicleList;
+}
+
 void Player::setName(string name) 
 {
 	this->name = name;

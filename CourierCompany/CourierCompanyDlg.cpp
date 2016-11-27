@@ -43,6 +43,7 @@ void CCDlg::DoDataExchange(CDataExchange* pDX)
 	DDX_Text(pDX, IDC_EDIT1, userDataTime);
 	DDV_MaxChars(pDX, userDataTime, 50);
 
+	DDX_Control(pDX, ID_RECORD_NEXT, headerDataNick);
 }
 
 BEGIN_MESSAGE_MAP(CCDlg, CDialogEx)
@@ -131,7 +132,7 @@ void CCDlg::StartGame()
 UINT CCDlg::SetHeaderUserData(LPVOID pParam)
 {
 	CCDlg *dlg = (CCDlg*)pParam;
-	string playerName, zm;
+	string playerName;
 	int playerLvl;
 	float playerAccountBalance;
 	CString pName, pLvl, pAccountBalance;
@@ -145,8 +146,6 @@ UINT CCDlg::SetHeaderUserData(LPVOID pParam)
 	playerLvl = player->getLevel();
 	playerAccountBalance = player->getAccountBalance();
 
-	zm = to_string(playerLvl);
-
 	pName = Library::ConvertStringToCString("Nick: " + playerName);
 	pLvl = Library::ConvertStringToCString("Level: " + to_string(playerLvl));
 	pAccountBalance = Library::ConvertStringToCString("Account balance: " + to_string(playerAccountBalance));
@@ -158,6 +157,18 @@ UINT CCDlg::SetHeaderUserData(LPVOID pParam)
 	return 0;
 }
 
+void CCDlg::UpdateHeaderData(string playerName, int playerLvl, float playerAccountBalance)
+{
+	CString pName, pLvl, pAccountBalance;
+
+	pName = Library::ConvertStringToCString("Nick: " + playerName);
+	pLvl = Library::ConvertStringToCString("Level: " + to_string(playerLvl));
+	pAccountBalance = Library::ConvertStringToCString("Account balance: " + to_string(playerAccountBalance));
+
+	playerDataName.SetWindowText(pName);
+	playerDataMoney.SetWindowText(pLvl);
+	playerDataMoney.SetWindowText(pAccountBalance);
+}
 
 
 
