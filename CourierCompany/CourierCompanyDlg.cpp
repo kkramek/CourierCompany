@@ -49,6 +49,8 @@ void CCDlg::DoDataExchange(CDataExchange* pDX)
 BEGIN_MESSAGE_MAP(CCDlg, CDialogEx)
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
+	ON_BN_CLICKED(IDC_BUTTON1, &CCDlg::saveAction)
+	ON_BN_CLICKED(IDC_BUTTON2, &CCDlg::loadAction)
 END_MESSAGE_MAP()
 
 
@@ -172,3 +174,17 @@ void CCDlg::UpdateHeaderData(string playerName, int playerLvl, float playerAccou
 
 
 
+
+
+void CCDlg::saveAction()
+{
+	FileManager* fileManager = new FileManager();
+	fileManager->SaveGame();
+}
+
+
+void CCDlg::loadAction()
+{
+	FileManager* fileManager = new FileManager();
+	fileManager->LoadGame();
+}

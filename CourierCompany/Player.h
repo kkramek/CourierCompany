@@ -19,6 +19,10 @@ public:
 	int getLevel();
 	float getAccountBalance();
 
+	void setName(string name);
+	void setLevel(int level);
+	void setAccountBalance(float accountBalance);
+
 	void addToAccountBalance(float money);
 	void takeFromAccountBalance(float money);
 
@@ -32,10 +36,6 @@ private:
 	float accountBalance;
 	vector < Vehicle* > vehicleList;
 
-protected:
-	void setName(string name);
-	void setLevel(int level);
-	void setAccountBalance(float accountBalance);
 
 };
 

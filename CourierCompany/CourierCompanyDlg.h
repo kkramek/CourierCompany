@@ -7,6 +7,7 @@
 #include "afxcmn.h"
 #include "TabMenu.h"
 #include "StartWindowDlg.h"
+#include "FileManager.h"
 #include <string>
 #include <iostream>
 
@@ -50,6 +51,8 @@ public:
 	CString userDataTime;
 	void StartGame();
 	static UINT SetHeaderUserData(LPVOID pParam);
-	void UpdateHeaderData(string playerName, int playerLvl, float playerAccountBalance)
-		CStatic headerDataNick;
+	void UpdateHeaderData(string playerName, int playerLvl, float playerAccountBalance);
+	CStatic headerDataNick;
+	afx_msg void saveAction();
+	afx_msg void loadAction();
 };

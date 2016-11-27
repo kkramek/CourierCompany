@@ -101,6 +101,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="FileManager.h" />
     <ClInclude Include="Vehicle.h" />
     <ClInclude Include="CourierCompany.h" />
     <ClInclude Include="CourierCompanyDlg.h" />
@@ -119,6 +120,7 @@
     <ClInclude Include="VehicleLibrary.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="FileManager.cpp" />
     <ClCompile Include="Vehicle.cpp" />
     <ClCompile Include="CourierCompany.cpp" />
     <ClCompile Include="CourierCompanyDlg.cpp" />
