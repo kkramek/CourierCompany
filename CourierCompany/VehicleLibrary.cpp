@@ -31,7 +31,7 @@ Vehicle* VehicleLibrary::createHuman()
 {
 	string name = "Human";
 	float speed = 5;
-	float price = 0;
+	int price = 0;
 	float capacity = 10;
 	float maxiPayload = 10;
 	float combustion = 0;
@@ -46,7 +46,7 @@ Vehicle* VehicleLibrary::createBike()
 {
 	string name = "Bike";
 	float speed = 10;
-	float price = 500;
+	int price = 500;
 	float capacity = 20;
 	float maxiPayload = 20;
 	float combustion = 0;
@@ -61,7 +61,7 @@ Vehicle* VehicleLibrary::createHatchback()
 {
 	string name = "Hatchback";
 	float speed = 90;
-	float price = 3000;
+	int price = 3000;
 	float capacity = 100;
 	float maxiPayload = 100;
 	float combustion = 50;
@@ -76,7 +76,7 @@ Vehicle* VehicleLibrary::createSedan()
 {
 	string name = "Sedan";
 	float speed = 80;
-	float price = 5000;
+	int price = 5000;
 	float capacity = 200;
 	float maxiPayload = 200;
 	float combustion = 6;
@@ -91,7 +91,7 @@ Vehicle* VehicleLibrary::createWagon()
 {
 	string name = "Wagon";
 	float speed = 70;
-	float price = 10000;
+	int price = 10000;
 	float capacity = 500;
 	float maxiPayload = 500;
 	float combustion = 7;
@@ -106,7 +106,7 @@ Vehicle* VehicleLibrary::createVan()
 {
 	string name = "Van";
 	float speed = 60;
-	float price = 20000;
+	int price = 20000;
 	float capacity = 1500;
 	float maxiPayload = 1500;
 	float combustion = 10;
@@ -121,7 +121,7 @@ Vehicle* VehicleLibrary::createMiniTruck()
 {
 	string name = "MiniTruck";
 	float speed = 50;
-	float price = 50000;
+	int price = 50000;
 	float capacity = 3000;
 	float maxiPayload = 3000;
 	float combustion = 12;

@@ -51,7 +51,7 @@ public:
 	CString userDataTime;
 	void StartGame();
 	static UINT SetHeaderUserData(LPVOID pParam);
-	void UpdateHeaderData(string playerName, int playerLvl, float playerAccountBalance);
+	void UpdateHeaderData(string playerName, int playerLvl, int playerAccountBalance);
 	CStatic headerDataNick;
 	afx_msg void saveAction();
 	afx_msg void loadAction();

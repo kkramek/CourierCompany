@@ -3,7 +3,7 @@
 #include <string>
 
 
-Vehicle::Vehicle(string name, float speed, float price, float capacity, float maxiPayload, float combustion, float fuelcapacity)
+Vehicle::Vehicle(string name, float speed, int price, float capacity, float maxiPayload, float combustion, float fuelcapacity)
 {
 	this->SetName(name);
 	this->SetSpeed(speed);
@@ -25,7 +25,7 @@ string Vehicle::GetName()
 	return this->name;
 }
 
-float Vehicle::GetPrice()
+int Vehicle::GetPrice()
 {
 	return this->price;
 }
@@ -41,7 +41,7 @@ void Vehicle::SetSpeed(float speed)
 	this->speed = speed;
 }
 
-void Vehicle::SetPrice(float price)
+void Vehicle::SetPrice(int price)
 {
 	this->price = price;
 }

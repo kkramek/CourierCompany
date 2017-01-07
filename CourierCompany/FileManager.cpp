@@ -30,7 +30,7 @@ void FileManager::SaveGame()
 	//Jak chcesz pobraæ kolejne atrybuty gracza robisz tak:
 	string playerName = player->getName();
 	int playerLvl = player->getLevel();
-	float playerAccountBalance = player->getAccountBalance();
+	int playerAccountBalance = player->getAccountBalance();
 
 	//Jak chcesz pobraæ listê pojazdów robisz tak:
 	vector < Vehicle* > vehicleList = player->GetVehicleList();
@@ -54,7 +54,7 @@ void FileManager::LoadGame()
 
 	//I jak chcesz mu uzupe³niæ dane to robisz to w ten sposób:
 	player->setLevel(1);
-	player->setAccountBalance(100.00);
+	player->setAccountBalance(100);
 
 	//Jak chcsz dodaæ pojzd to analogicznie tylko musisz utworzyæ obiekt  
 	//player->appendVehicle(Vehicle);

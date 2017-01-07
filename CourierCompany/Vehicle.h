@@ -9,15 +9,15 @@ class Vehicle
 {
 
 public:
-	Vehicle(string Name, float Speed, float Price, float Capacity, float MaxiPayload, float Combustion, float Fuelcapacity);
+	Vehicle(string Name, float Speed, int Price, float Capacity, float MaxiPayload, float Combustion, float Fuelcapacity);
 	~Vehicle();
 
 	string GetName();
-	float GetPrice();
+	int GetPrice();
 
 	void SetName(string name);
 	void SetSpeed(float speed);
-	void SetPrice(float price);
+	void SetPrice(int price);
 	void SetCapacity(float capacity);
 	void SetMaxiPayload(float maxiPayload);
 	void SetFuelLevel(float fuelLevel);
@@ -28,7 +28,7 @@ private:
 	int id;
 	string name;
 	float speed;
-	float price;
+	int price;
 	float capacity;
 	float maxiPayload;
 	float fuelLevel;

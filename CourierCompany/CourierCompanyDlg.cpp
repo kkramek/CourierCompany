@@ -136,7 +136,7 @@ UINT CCDlg::SetHeaderUserData(LPVOID pParam)
 	CCDlg *dlg = (CCDlg*)pParam;
 	string playerName;
 	int playerLvl;
-	float playerAccountBalance;
+	int playerAccountBalance;
 	CString pName, pLvl, pAccountBalance;
 
 	Game* game;
@@ -159,7 +159,7 @@ UINT CCDlg::SetHeaderUserData(LPVOID pParam)
 	return 0;
 }
 
-void CCDlg::UpdateHeaderData(string playerName, int playerLvl, float playerAccountBalance)
+void CCDlg::UpdateHeaderData(string playerName, int playerLvl, int playerAccountBalance)
 {
 	CString pName, pLvl, pAccountBalance;
 

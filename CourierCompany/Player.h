@@ -17,14 +17,14 @@ public:
 
 	string getName();
 	int getLevel();
-	float getAccountBalance();
+	int getAccountBalance();
 
 	void setName(string name);
 	void setLevel(int level);
-	void setAccountBalance(float accountBalance);
+	void setAccountBalance(int accountBalance);
 
-	void addToAccountBalance(float money);
-	void takeFromAccountBalance(float money);
+	void addToAccountBalance(int money);
+	void takeFromAccountBalance(int money);
 
 	void appendVehicle(Vehicle *vehicle);
 	vector < Vehicle* > GetVehicleList();
@@ -33,7 +33,7 @@ private:
 	string name;
 	string courierType;
 	int level;
-	float accountBalance;
+	int accountBalance;
 	vector < Vehicle* > vehicleList;
 
 
