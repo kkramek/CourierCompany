@@ -49,6 +49,7 @@ void CTabGarage::CompleteVehicleList()
 
 	VehicleLibrary* vehicleLibrary = new VehicleLibrary();
 	vehicleList = vehicleLibrary->GetVehicleList();
+	reverse(vehicleList.begin(), vehicleList.end());
 
 	for (iter = vehicleList.begin(), end = vehicleList.end(); iter != end; ++iter) {
 
