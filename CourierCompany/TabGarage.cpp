@@ -77,9 +77,20 @@ void CTabGarage::BuyChangeClick()
 
 		game = Game::getInstance();
 		player = game->GetPlayer();
-		player->appendVehicle(vehicle);
 
-		this->AppendPlayerVehicleList(vehicle->GetName());
+		if (vehicle->GetPrice() < player->getAccountBalance()) {
+			
+			player->takeFromAccountBalance(vehicle->GetPrice());
+			player->appendVehicle(vehicle);
+			this->AppendPlayerVehicleList(vehicle->GetName());
+		
+		}
+		else {
+			MessageBox(_T("You don't have enough money."), _T("Error"),
+				MB_ICONERROR | MB_OK);
+		}
+
+		
 	}
 }
 
