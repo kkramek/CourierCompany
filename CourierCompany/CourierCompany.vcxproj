@@ -146,6 +146,7 @@
     <None Include="res\CourierCompany.rc2" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="..\..\bitmap1_acf3336.bmp" />
     <Image Include="res\CourierCompany.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
