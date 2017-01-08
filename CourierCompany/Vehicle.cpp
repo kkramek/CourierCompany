@@ -30,6 +30,35 @@ int Vehicle::GetPrice()
 	return this->price;
 }
 
+float Vehicle::GetSpeed()
+{
+	return this->speed;
+}
+
+float Vehicle::GetCapacity()
+{
+	return this->capacity;
+}
+
+float Vehicle::GetMaxiPayload()
+{
+	return this->maxiPayload;
+}
+
+float Vehicle::GetFuelCapacity()
+{
+	return this->fuelCapacity;
+}
+
+float Vehicle::GetFuelLevel()
+{
+	return this->fuelLevel;
+}
+
+float Vehicle::GetCombustion()
+{
+	return this->combustion;
+}
 
 void Vehicle::SetName(string name)
 {

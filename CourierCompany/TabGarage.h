@@ -30,4 +30,5 @@ public:
 	CListCtrl vehicleListCtrl;
 	afx_msg void BuyChangeClick();
 	CListBox playerVehicleList;
+
 };

@@ -14,6 +14,12 @@ public:
 
 	string GetName();
 	int GetPrice();
+	float GetSpeed();
+	float GetCapacity();
+	float GetMaxiPayload();
+	float GetFuelCapacity();
+	float GetFuelLevel();
+	float GetCombustion();
 
 	void SetName(string name);
 	void SetSpeed(float speed);

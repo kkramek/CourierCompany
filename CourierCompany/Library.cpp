@@ -28,3 +28,18 @@ CString Library::ConvertStringToCString(string string)
 
 	return cstring;
 }
+
+string Library::CStrToStr(CString cString)
+{
+	CT2CA pszConvertedAnsiString(cString);
+	string strStd(pszConvertedAnsiString);
+
+	return strStd;
+}
+
+CString Library::StrToCStr(string string)
+{
+	CString cstring(string.c_str());
+
+	return cstring;
+}
