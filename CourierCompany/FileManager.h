@@ -15,5 +15,7 @@ public:
 	void SaveGame();
 	void LoadGame();
 	void LoadVehicleList();
+	void LoadRoadList();
+	void LoadHouseList();
 };
 
