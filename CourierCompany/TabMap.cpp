@@ -60,3 +60,4 @@ void CTabMap::DrawMap(CPaintDC & X)
 	X.MoveTo(100, 100);
 	X.LineTo(200, 200);
 }
+///////////////////////////////////

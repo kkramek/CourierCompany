@@ -137,7 +137,7 @@
     <Image Include="res\CourierCompany.ico">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="..\..\bitmap1_acf3336.bmp">
+    <Image Include="..\..\..\..\Desktop\bitmap1.bmp">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

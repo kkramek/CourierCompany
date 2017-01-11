@@ -55,4 +55,6 @@ public:
 	CStatic headerDataNick;
 	afx_msg void saveAction();
 	afx_msg void loadAction();
+	afx_msg void OnStnClickedWindowSplit();
+	afx_msg void OnStnClickedEdit1();
 };
