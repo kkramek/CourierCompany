@@ -5,6 +5,7 @@
 #include "CourierCompany.h"
 #include "TabGarage.h"
 #include "afxdialogex.h"
+#include <sstream>
 
 
 // CTabGarage dialog
@@ -34,13 +35,20 @@ void CTabGarage::DoDataExchange(CDataExchange* pDX)
 	vehicleListCtrl.InsertColumn(6, _T("Fuel Capacity"), LVCFMT_RIGHT, 95);
 
 	this->CompleteVehicleList();
-	
+
 	DDX_Control(pDX, IDC_LIST3, playerVehicleList);
+	DDX_Control(pDX, ID_MAXSPEED, MaxSpeedOfSel);
+	DDX_Control(pDX, IDC_MAXCOMBUSTION, MaxCombustionOfSel);
+	DDX_Control(pDX, ID_FUELLEVEL, FuelLevelOfSel);
+	DDX_Control(pDX, ID_MAXCAPACITY, MaxCapacityOfSel);
+	DDX_Control(pDX, ID_MAXPAYLOAD, MaxPayloadOfSel);
+	DDX_Control(pDX, ID_MAXFUELLEVEL, MaxFuelLevelOfSel);
 }
 
 
 BEGIN_MESSAGE_MAP(CTabGarage, CDialogEx)
 	ON_BN_CLICKED(IDC_BUTTON1, &CTabGarage::BuyChangeClick)
+	ON_LBN_SELCHANGE(IDC_LIST3, &CTabGarage::OnLbnSelchangeList3)
 END_MESSAGE_MAP()
 
 
@@ -94,18 +102,40 @@ void CTabGarage::BuyChangeClick()
 			player->takeFromAccountBalance(vehicle->GetPrice());
 			player->appendVehicle(vehicle);
 			this->AppendPlayerVehicleList(vehicle->GetName());
+			
 		
 		}
 		else {
 			MessageBox(_T("You don't have enough money."), _T("Error"),
 				MB_ICONERROR | MB_OK);
 		}
-
-		
 	}
+
 }
 
 void CTabGarage::AppendPlayerVehicleList(string vehicleName)
 {
 	playerVehicleList.AddString(Library::ConvertStringToCString(vehicleName));
+}
+
+
+void CTabGarage::OnLbnSelchangeList3()
+{
+	UINT uiSelection = playerVehicleList.GetCurSel();
+	Game *game;
+	Player *player;
+	vector < Vehicle* > vehicleList;
+	Vehicle* vehicle;
+
+	game = Game::getInstance();
+	player = game->GetPlayer();
+	vehicleList = player->GetVehicleList();
+	vehicle = vehicleList[uiSelection];
+
+	MaxSpeedOfSel.SetWindowText(Library::ConvertStringToCString(to_string(vehicle->GetSpeed())));
+	MaxCombustionOfSel.SetWindowText(Library::ConvertStringToCString(to_string(vehicle->GetCombustion())));
+	FuelLevelOfSel.SetWindowText(Library::ConvertStringToCString(to_string(vehicle->GetFuelLevel())));
+	MaxCapacityOfSel.SetWindowText(Library::ConvertStringToCString(to_string(vehicle->GetCapacity())));
+	MaxPayloadOfSel.SetWindowText(Library::ConvertStringToCString(to_string(vehicle->GetMaxiPayload())));
+	MaxFuelLevelOfSel.SetWindowText(Library::ConvertStringToCString(to_string(vehicle->GetFuelCapacity())));
 }
