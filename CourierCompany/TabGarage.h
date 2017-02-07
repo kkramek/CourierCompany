@@ -31,4 +31,11 @@ public:
 	afx_msg void BuyChangeClick();
 	CListBox playerVehicleList;
 
+	afx_msg void OnLbnSelchangeList3();
+	CStatic MaxSpeedOfSel;
+	CStatic MaxCombustionOfSel;
+	CStatic FuelLevelOfSel;
+	CStatic MaxCapacityOfSel;
+	CStatic MaxPayloadOfSel;
+	CStatic MaxFuelLevelOfSel;
 };

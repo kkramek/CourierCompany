@@ -51,6 +51,7 @@ BEGIN_MESSAGE_MAP(CCDlg, CDialogEx)
 	ON_WM_QUERYDRAGICON()
 	ON_BN_CLICKED(IDC_BUTTON1, &CCDlg::saveAction)
 	ON_BN_CLICKED(IDC_BUTTON2, &CCDlg::loadAction)
+	ON_STN_CLICKED(ID_WINDOW_SPLIT, &CCDlg::OnStnClickedWindowSplit)
 END_MESSAGE_MAP()
 
 
@@ -187,4 +188,10 @@ void CCDlg::loadAction()
 {
 	FileManager* fileManager = new FileManager();
 	fileManager->LoadGame();
+}
+
+
+void CCDlg::OnStnClickedWindowSplit()
+{
+	// TODO: Add your control notification handler code here
 }
