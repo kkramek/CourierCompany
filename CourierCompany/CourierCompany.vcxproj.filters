@@ -140,5 +140,8 @@
     <Image Include="..\..\..\..\Desktop\bitmap1.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="res\bitmap2.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

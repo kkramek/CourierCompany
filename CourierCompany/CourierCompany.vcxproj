@@ -147,6 +147,7 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\..\..\..\Desktop\bitmap1.bmp" />
+    <Image Include="res\bitmap2.bmp" />
     <Image Include="res\CourierCompany.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
