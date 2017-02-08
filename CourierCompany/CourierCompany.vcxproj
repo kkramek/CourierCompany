@@ -104,6 +104,7 @@
     <ClInclude Include="House.h" />
     <ClInclude Include="Coordinates.h" />
     <ClInclude Include="FileManager.h" />
+    <ClInclude Include="MapLibrary.h" />
     <ClInclude Include="Road.h" />
     <ClInclude Include="Vehicle.h" />
     <ClInclude Include="CourierCompany.h" />
@@ -126,6 +127,7 @@
     <ClCompile Include="House.cpp" />
     <ClCompile Include="Coordinates.cpp" />
     <ClCompile Include="FileManager.cpp" />
+    <ClCompile Include="MapLibrary.cpp" />
     <ClCompile Include="Road.cpp" />
     <ClCompile Include="Vehicle.cpp" />
     <ClCompile Include="CourierCompany.cpp" />

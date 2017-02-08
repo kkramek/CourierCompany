@@ -25,13 +25,6 @@ BOOL CTabMap::OnInitDialog()
 {
 	CDialogEx::OnInitDialog();
 
-	//CBitmap bmp;
-
-	//bmp.LoadBitmap(GAMEMAP);
-
-	//gameMapField.SetBitmap((HBITMAP)bmp);
-
-
 	return TRUE;  // return TRUE  unless you set the focus to a control
 }
 
@@ -42,7 +35,7 @@ void CTabMap::DoDataExchange(CDataExchange* pDX)
 
 
 BEGIN_MESSAGE_MAP(CTabMap, CDialogEx)
-	//ON_WM_PAINT()
+	ON_WM_PAINT()
 END_MESSAGE_MAP()
 
 
