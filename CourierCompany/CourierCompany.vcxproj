@@ -155,7 +155,6 @@
     <None Include="res\CourierCompany.rc2" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="..\..\..\..\Desktop\bitmap1.bmp" />
     <Image Include="res\bitmap2.bmp" />
     <Image Include="res\CourierCompany.ico" />
   </ItemGroup>

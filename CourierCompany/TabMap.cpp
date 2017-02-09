@@ -25,6 +25,8 @@ BOOL CTabMap::OnInitDialog()
 {
 	CDialogEx::OnInitDialog();
 
+	this->SetBackgroundImage(IDB_BITMAP2, BACKGR_TOPLEFT, TRUE);
+
 	return TRUE;  // return TRUE  unless you set the focus to a control
 }
 
