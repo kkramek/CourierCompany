@@ -52,7 +52,10 @@ void CTabMap::DrawMap(CPaintDC & X)
 	CPen pen(PS_SOLID, 2, RGB(255, 0, 0));
 	CPen* pOldPen = X.SelectObject(&pen);
 
-	X.MoveTo(100, 100);
-	X.LineTo(200, 200);
+	X.SelectStockObject(BLACK_BRUSH);
+	X.Rectangle(0, 0, 10, 10);
+
+	//X.MoveTo(100, 100);
+	//X.LineTo(200, 200);
 }
 ///////////////////////////////////
