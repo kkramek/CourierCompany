@@ -10,6 +10,7 @@
 #include "StartWindowDlg.h"
 #include "Library.h"
 #include "afxwin.h"
+#include <fstream>
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -44,6 +45,7 @@ void CCDlg::DoDataExchange(CDataExchange* pDX)
 	DDV_MaxChars(pDX, userDataTime, 50);
 
 	DDX_Control(pDX, ID_RECORD_NEXT, headerDataNick);
+	DDX_Control(pDX, IDC_BUTTON1, SaveGame);
 }
 
 BEGIN_MESSAGE_MAP(CCDlg, CDialogEx)
@@ -179,8 +181,55 @@ void CCDlg::UpdateHeaderData(string playerName, int playerLvl, int playerAccount
 
 void CCDlg::saveAction()
 {
-	FileManager* fileManager = new FileManager();
-	fileManager->SaveGame();
+	/*FileManager* fileManager = new FileManager();
+	fileManager->SaveGame();*/
+
+	CFileDialog FileDialog(FALSE, _T("save"), _T("*.save"));
+
+	if (FileDialog.DoModal() == IDOK)
+	{
+		ofstream savefile;
+		savefile.open(Library::ConvertCStringToString(FileDialog.GetPathName()), std::ios::binary);
+		if (savefile.is_open())
+		{
+			string playerName;
+			int playernamelenght;
+			int playerLvl;
+			int playerAccountBalance;
+			vector < Vehicle* > vehicleList;
+			Vehicle *vehicle;
+
+			Game* game;
+			Player* player;
+			game = Game::getInstance();
+			player = game->GetPlayer();
+
+			playerName = player->getName();
+			playerLvl = player->getLevel();
+			playerAccountBalance = player->getAccountBalance();
+			vehicleList = player->GetVehicleList();
+			playernamelenght = playerName.length();
+
+
+			savefile << playernamelenght;
+			for (int i = 0; i < playernamelenght; i++)
+				savefile << playerName[i];
+			savefile << playerLvl << playerAccountBalance;
+
+			for (int i = 0; i < vehicleList.size(); i++)
+			{
+
+			}
+			
+			savefile.close();
+		}
+		else
+		{
+			MessageBox(_T("Access danied"), _T("Error"),
+				MB_ICONERROR | MB_OK);
+		}
+	}
+
 }
 
 

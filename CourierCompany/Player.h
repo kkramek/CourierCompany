@@ -18,6 +18,8 @@ public:
 	string getName();
 	int getLevel();
 	int getAccountBalance();
+	float GetMAXICapacityofallcars();
+	float GetMaxiPayloadofallcars();
 
 	void setName(string name);
 	void setLevel(int level);
