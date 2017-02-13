@@ -23,6 +23,11 @@ MapLibrary * MapLibrary::GetInstance() {
 	return instance;
 };
 
+int MapLibrary::GetRandomHouse()
+{
+	return 1;
+}
+
 void MapLibrary::GetHouseList()
 {
 	this->houseList.push_back(new House(1,1,299,152,291,148));

@@ -16,6 +16,8 @@ public:
 	void GetHouseList();
 	void GetRoadList();
 
+	int GetRandomHouse();
+
 private:
 	static MapLibrary *instance;
 	vector < Road* > roadList;

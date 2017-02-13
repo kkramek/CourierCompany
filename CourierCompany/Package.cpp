@@ -5,7 +5,8 @@
 
 using namespace std;
 
-Package::Package(int type)
+//Konstruktor bêdzie ju¿ sam w sobie losowa³ paczkê
+Package::Package(int type = 10)
 {
 	switch (type)
 	{
