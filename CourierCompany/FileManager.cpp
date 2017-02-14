@@ -11,36 +11,38 @@ FileManager::~FileManager()
 {
 }
 
-//TODO: Stworzyæ funkcje zapisuj¹c¹ stan gry do pliku
+//TODO: StworzyÄ‡ funkcje zapisujÄ…cÄ… stan gry do pliku
 void FileManager::SaveGame()
 {
+	
 	/*
-		Ogólnie masz za zadanie pobieraæ wszystkie elementy gry i zapisywaæ je do pliku .bin
-		Strukture pliku musisz sobie tak przemyœleæ ¿ebyœ potem nie mia³ problemu ze zrobieniem 
-		funkcji odczytu stanu gry. Narazie skup siê na tych danych które Ci wy¿ej wymieni³em. 
-		Jak ju¿ bêdzie dzia³aæ to bêdê Ci podsy³a³ kolejne elementy o które masz rozbudowaæ t¹ klasê.
+	TEST PROBA NOWA
+		OgÃ³lnie masz za zadanie pobieraÄ‡ wszystkie elementy gry i zapisywaÄ‡ je do pliku .bin
+		Strukture pliku musisz sobie tak przemyÅ›leÄ‡ Å¼ebyÅ› potem nie miaÅ‚ problemu ze zrobieniem 
+		funkcji odczytu stanu gry. Narazie skup siÄ™ na tych danych ktÃ³re Ci wyÅ¼ej wymieniÅ‚em. 
+		Jak juÅ¼ bÄ™dzie dziaÅ‚aÄ‡ to bÄ™dÄ™ Ci podsyÅ‚aÅ‚ kolejne elementy o ktÃ³re masz rozbudowaÄ‡ tÄ… klasÄ™.
 	*/
 
-	//Tak siê pobiera nadrzêdy obiekt Game. Ta klasa ma wszystkie potrzebe Ci dane
+	//Tak siÄ™ pobiera nadrzÄ™dy obiekt Game. Ta klasa ma wszystkie potrzebe Ci dane
 	Game* game = Game::getInstance();
 
-	//Jak chcesz pobraæ gracza to wyci¹gasz go z obiektu Game w ten sposób:
+	//Jak chcesz pobraÄ‡ gracza to wyciÄ…gasz go z obiektu Game w ten sposÃ³b:
 	Player* player = game->GetPlayer();
 
-	//Jak chcesz pobraæ kolejne atrybuty gracza robisz tak:
+	//Jak chcesz pobraÄ‡ kolejne atrybuty gracza robisz tak:
 	string playerName = player->getName();
 	int playerLvl = player->getLevel();
 	int playerAccountBalance = player->getAccountBalance();
 
-	//Jak chcesz pobraæ listê pojazdów robisz tak:
+	//Jak chcesz pobraÄ‡ listÄ™ pojazdÃ³w robisz tak:
 	vector < Vehicle* > vehicleList = player->GetVehicleList();
 }
 
-//TODO: Stworzyæ funkcje wczytuj¹c¹ stan gry
+//TODO: StworzyÄ‡ funkcje wczytujÄ…cÄ… stan gry
 void FileManager::LoadGame()
 {
 	/*
-		Wczytujesz ten swój plik .bin i uzupe³niasz kolejno dane w odpowiednich klasach
+		Wczytujesz ten swÃ³j plik .bin i uzupeÅ‚niasz kolejno dane w odpowiednich klasach
 	*/
 
 	//Znowu pobierasz obiekt Game (W przypadku braku obiektu getInstance go sobie utworzy)
@@ -49,14 +51,14 @@ void FileManager::LoadGame()
 	//Tworzysz gracza
 	game->SetPlayer("Podajesz jako parmetr nick gracza");
 
-	//Pobierasz utworzonego gracza ¿eby mieæ dostêp do jego metod
+	//Pobierasz utworzonego gracza Å¼eby mieÄ‡ dostÄ™p do jego metod
 	Player* player = game->GetPlayer();
 
-	//I jak chcesz mu uzupe³niæ dane to robisz to w ten sposób:
+	//I jak chcesz mu uzupeÅ‚niÄ‡ dane to robisz to w ten sposÃ³b:
 	player->setLevel(1);
 	player->setAccountBalance(100);
 
-	//Jak chcsz dodaæ pojzd to analogicznie tylko musisz utworzyæ obiekt  
+	//Jak chcsz dodaÄ‡ pojzd to analogicznie tylko musisz utworzyÄ‡ obiekt  
 	//player->appendVehicle(Vehicle);
 
 }
