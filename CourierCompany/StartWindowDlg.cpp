@@ -8,6 +8,7 @@
 #include "Library.h"
 #include <string>
 #include <iostream>
+#include <fstream>
 
 using namespace std;
 
@@ -33,11 +34,13 @@ void StartWindowDlg::DoDataExchange(CDataExchange* pDX)
 	DDX_Text(pDX, IDC_EDIT1, startDataNick);
 	DDV_MaxChars(pDX, startDataNick, 50);
 	DDX_Control(pDX, IDC_EDIT1, playerNick);
+	DDX_Control(pDX, IDLOAD, LoadGame);
 }
 
 
 BEGIN_MESSAGE_MAP(StartWindowDlg, CDialog)
 	ON_BN_CLICKED(IDOK, &StartWindowDlg::StartGameOnClickBtn)
+	ON_BN_CLICKED(IDLOAD, &StartWindowDlg::OnBnClickedLoad)
 END_MESSAGE_MAP()
 
 
@@ -74,3 +77,81 @@ void StartWindowDlg::StartGameOnClickBtn()
 }
 
 
+
+
+void StartWindowDlg::OnBnClickedLoad()
+{
+	CFileDialog FileDialog(TRUE, _T("save"), _T("*.save"));
+
+	if (FileDialog.DoModal() == IDOK)
+	{
+		CString PathName = FileDialog.GetPathName();
+		ifstream loadfile;
+		loadfile.open(Library::ConvertCStringToString(PathName), ios::binary);
+		if (loadfile.is_open())
+		{
+			string name;
+			int namelenght;
+			int money;
+			int lvl;
+			char temp;
+			char dollar;
+			loadfile >> namelenght;
+			for (int i = 0; i < namelenght; i++)
+			{
+				loadfile >> temp;
+				name += temp;
+			}
+			loadfile >> lvl >> dollar >> money >> dollar;
+
+			string vehiclename;
+			int vehiclenamelenght;
+			float vehiclespeed;
+			int vehicleprice;
+			float vehiclecapacity;
+			float vehiclemaxiPayload;
+			float vehiclefuelLevel;
+			float vehiclecombustion;
+			float vehiclefuelCapacity;
+			
+			int vehicleamount;
+			loadfile >> vehicleamount >> dollar;
+
+			for (int j = 0; j < vehicleamount; j++)
+			{
+				vehiclename.erase();
+				loadfile >> vehiclenamelenght;
+				for (int i = 0; i < vehiclenamelenght; i++)
+				{
+					loadfile >> temp;
+					vehiclename += temp;
+				}
+				loadfile >> vehicleprice >> dollar
+					>> vehiclespeed >> dollar
+					>> vehiclecapacity >> dollar
+					>> vehiclemaxiPayload >> dollar
+					>> vehiclefuelCapacity >> dollar
+					>> vehiclefuelLevel >> dollar
+					>> vehiclecombustion >> dollar;
+			/*	MessageBox(Library::ConvertStringToCString(vehiclename), _T("TEST"),
+					MB_ICONERROR | MB_OK);*/
+
+			}
+			
+
+			loadfile.close();
+
+			
+
+			this->SetUserName(name);
+			CDialog::OnOK();
+
+		}
+		else
+		{
+			MessageBox(_T("Access danied"), _T("Error"),
+				MB_ICONERROR | MB_OK);
+		}
+		
+	}
+}

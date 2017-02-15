@@ -33,4 +33,6 @@ private:
 public:
 	afx_msg void StartGameOnClickBtn();
 	CEdit playerNick;
+	CButton LoadGame;
+	afx_msg void OnBnClickedLoad();
 };

@@ -25,6 +25,7 @@ BOOL CTabMap::OnInitDialog()
 {
 	CDialogEx::OnInitDialog();
 
+	this->SetBackgroundImage(mapka, BACKGR_TOPLEFT, TRUE);
 	//CBitmap bmp;
 
 	//bmp.LoadBitmap(GAMEMAP);
