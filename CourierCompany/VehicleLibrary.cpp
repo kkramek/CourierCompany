@@ -31,11 +31,11 @@ Vehicle* VehicleLibrary::createHuman()
 {
 	string name = "Human";
 	float speed = 5;
-	int price = 0;
+	int price = 5;
 	float capacity = 10;
 	float maxiPayload = 10;
-	float combustion = 0;
-	float fuelCapacity = 0;
+	float combustion = 0.0;
+	float fuelCapacity = 0.0;
 
 	Vehicle* human = new Vehicle(name, speed, price, capacity, maxiPayload, combustion, fuelCapacity);
 
@@ -49,8 +49,8 @@ Vehicle* VehicleLibrary::createBike()
 	int price = 500;
 	float capacity = 20;
 	float maxiPayload = 20;
-	float combustion = 0;
-	float fuelCapacity = 0;
+	float combustion = 0.0;
+	float fuelCapacity = 0.0;
 
 	Vehicle* bike = new Vehicle(name, speed, price, capacity, maxiPayload, combustion, fuelCapacity);
 

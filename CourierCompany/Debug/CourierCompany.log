@@ -1,3 +1,4 @@
-﻿  StartWindowDlg.cpp
+﻿  TabGarage.cpp
+cl : Command line warning D9028: minimal rebuild failure, reverting to normal build
   CourierCompany.vcxproj -> C:\Users\ja\CC\CourierCompany\Debug\CourierCompany.exe
   CourierCompany.vcxproj -> C:\Users\ja\CC\CourierCompany\Debug\CourierCompany.pdb (Full PDB)

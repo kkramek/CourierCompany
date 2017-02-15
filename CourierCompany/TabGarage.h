@@ -38,4 +38,6 @@ public:
 	CStatic MaxCapacityOfSel;
 	CStatic MaxPayloadOfSel;
 	CStatic MaxFuelLevelOfSel;
+	CButton GetFuel;
+	afx_msg void OnBnClickedGetfuel();
 };

@@ -10,9 +10,9 @@ Vehicle::Vehicle(string name, float speed, int price, float capacity, float maxi
 	this->SetPrice(price);
 	this->SetCapacity(capacity);
 	this->SetMaxiPayload(maxiPayload);
-	this->SetFuelLevel(fuelLevel);
+	this->SetFuelLevel(float(0.0));
 	this->SetCombustion(combustion);
-	this->SetFuelCapacity(fuelCapacity);
+	this->SetFuelCapacity(fuelcapacity);
 }
 
 
