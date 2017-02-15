@@ -181,8 +181,6 @@ void CCDlg::UpdateHeaderData(string playerName, int playerLvl, int playerAccount
 
 void CCDlg::saveAction()
 {
-	/*FileManager* fileManager = new FileManager();
-	fileManager->SaveGame();*/
 
 	CFileDialog FileDialog(FALSE, _T("save"), _T("*.save"));
 
@@ -197,7 +195,6 @@ void CCDlg::saveAction()
 			int playerLvl;
 			int playerAccountBalance;
 			vector < Vehicle* > vehicleList;
-			Vehicle *vehicle;
 
 			Game* game;
 			Player* player;
@@ -214,13 +211,24 @@ void CCDlg::saveAction()
 			savefile << playernamelenght;
 			for (int i = 0; i < playernamelenght; i++)
 				savefile << playerName[i];
-			savefile << playerLvl << playerAccountBalance;
+			savefile  << playerLvl << '$' << playerAccountBalance << '$' << vehicleList.size() << '$';
 
-			for (int i = 0; i < vehicleList.size(); i++)
+			for (unsigned int i = 0; i < vehicleList.size(); i++)
 			{
-
+				playerName = vehicleList[i]->GetName();
+				playernamelenght = vehicleList[i]->GetName().size();
+				savefile << playernamelenght;
+				for (int j = 0; j < playernamelenght; j++)
+					savefile << playerName[j];
+				savefile << vehicleList[i]->GetPrice() << '$'
+					<< vehicleList[i]->GetSpeed() << '$'
+					<< vehicleList[i]->GetCapacity() << '$'
+					<< vehicleList[i]->GetMaxiPayload() << '$'
+					<< vehicleList[i]->GetFuelCapacity() << '$'
+					<< vehicleList[i]->GetFuelLevel() << '$'
+					<< vehicleList[i]->GetCombustion() << '$';
 			}
-			
+
 			savefile.close();
 		}
 		else

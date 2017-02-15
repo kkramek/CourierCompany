@@ -95,18 +95,53 @@ void StartWindowDlg::OnBnClickedLoad()
 			int money;
 			int lvl;
 			char temp;
+			char dollar;
 			loadfile >> namelenght;
 			for (int i = 0; i < namelenght; i++)
 			{
 				loadfile >> temp;
 				name += temp;
 			}
-			loadfile >> lvl >> money;
+			loadfile >> lvl >> dollar >> money >> dollar;
 
+			string vehiclename;
+			int vehiclenamelenght;
+			float vehiclespeed;
+			int vehicleprice;
+			float vehiclecapacity;
+			float vehiclemaxiPayload;
+			float vehiclefuelLevel;
+			float vehiclecombustion;
+			float vehiclefuelCapacity;
+			
+			int vehicleamount;
+			loadfile >> vehicleamount >> dollar;
+
+			for (int j = 0; j < vehicleamount; j++)
+			{
+				vehiclename.erase();
+				loadfile >> vehiclenamelenght;
+				for (int i = 0; i < vehiclenamelenght; i++)
+				{
+					loadfile >> temp;
+					vehiclename += temp;
+				}
+				loadfile >> vehicleprice >> dollar
+					>> vehiclespeed >> dollar
+					>> vehiclecapacity >> dollar
+					>> vehiclemaxiPayload >> dollar
+					>> vehiclefuelCapacity >> dollar
+					>> vehiclefuelLevel >> dollar
+					>> vehiclecombustion >> dollar;
+			/*	MessageBox(Library::ConvertStringToCString(vehiclename), _T("TEST"),
+					MB_ICONERROR | MB_OK);*/
+
+			}
+			
 
 			loadfile.close();
 
-
+			
 
 			this->SetUserName(name);
 			CDialog::OnOK();
