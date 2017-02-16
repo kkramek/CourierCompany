@@ -1,5 +1,7 @@
 #include "stdafx.h"
 #include "MapLibrary.h"
+#include <cstdlib>
+#include <ctime>
 
 MapLibrary* MapLibrary::instance = NULL;
 
@@ -25,7 +27,8 @@ MapLibrary * MapLibrary::GetInstance() {
 
 int MapLibrary::GetRandomHouse()
 {
-	return 1;
+	srand(time(NULL));
+	return (std::rand() % houseList.size());
 }
 
 void MapLibrary::GetHouseList()

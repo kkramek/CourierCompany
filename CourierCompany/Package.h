@@ -15,7 +15,7 @@ public:
 	void setTypeId(int typeId);
 	void setSize(float size);
 	void setWeight(float weight);
-	void setPrize(float prize);
+	void setPrize(int prize);
 	void setDeliveryDate(int deliveryDate);
 	void setHouseId(int houseId);
 	void setDelivered(bool delivered);
@@ -23,7 +23,7 @@ public:
 	//Getters
 	float getSize();
 	float getWeight();
-	float getPrize();
+	int getPrize();
 	int getDeliveryDate();
 	int getHouseId();
 	bool getDelivered();
@@ -39,11 +39,11 @@ private:
 
 	float size;
 	float weight;
-	float prize;
+	int prize;
 	int deliveryDate;
 	int houseId;
 	bool delivered;
 
-	void preparePackage(int typeId, float size, float weight, float prize);
+	void preparePackage(int typeId, float size, float weight, int prize, int houseId);
 	void prepareRandomPackage();
 };
