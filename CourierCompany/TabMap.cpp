@@ -25,13 +25,7 @@ BOOL CTabMap::OnInitDialog()
 {
 	CDialogEx::OnInitDialog();
 
-	this->SetBackgroundImage(mapka, BACKGR_TOPLEFT, TRUE);
-	//CBitmap bmp;
-
-	//bmp.LoadBitmap(GAMEMAP);
-
-	//gameMapField.SetBitmap((HBITMAP)bmp);
-
+	this->SetBackgroundImage(IDB_BITMAP2, BACKGR_TOPLEFT, TRUE);
 
 	return TRUE;  // return TRUE  unless you set the focus to a control
 }
@@ -43,7 +37,7 @@ void CTabMap::DoDataExchange(CDataExchange* pDX)
 
 
 BEGIN_MESSAGE_MAP(CTabMap, CDialogEx)
-	//ON_WM_PAINT()
+	ON_WM_PAINT()
 END_MESSAGE_MAP()
 
 
@@ -58,7 +52,10 @@ void CTabMap::DrawMap(CPaintDC & X)
 	CPen pen(PS_SOLID, 2, RGB(255, 0, 0));
 	CPen* pOldPen = X.SelectObject(&pen);
 
-	X.MoveTo(100, 100);
-	X.LineTo(200, 200);
+	X.SelectStockObject(BLACK_BRUSH);
+	X.Rectangle(0, 0, 10, 10);
+
+	//X.MoveTo(100, 100);
+	//X.LineTo(200, 200);
 }
 ///////////////////////////////////

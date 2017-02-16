@@ -1,17 +1,13 @@
-﻿  VehicleLibrary.cpp
-  Vehicle.cpp
+﻿  StartWindowDlg.cpp
+  Generating Code...
+  Compiling...
   TabWarehouse.cpp
   TabMenu.cpp
   TabMap.cpp
   TabGarage.cpp
-  StartWindowDlg.cpp
-  Player.cpp
-  Package.cpp
   Game.cpp
-  FileManager.cpp
   CourierCompanyDlg.cpp
   CourierCompany.cpp
   Generating Code...
-  LINK : C:\Users\ja\CC\CourierCompany\Debug\CourierCompany.exe not found or not built by the last incremental link; performing full link
   CourierCompany.vcxproj -> C:\Users\ja\CC\CourierCompany\Debug\CourierCompany.exe
   CourierCompany.vcxproj -> C:\Users\ja\CC\CourierCompany\Debug\CourierCompany.pdb (Full PDB)

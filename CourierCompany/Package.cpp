@@ -5,7 +5,8 @@
 
 using namespace std;
 
-Package::Package(int type)
+//Konstruktor bêdzie ju¿ sam w sobie losowa³ paczkê
+Package::Package(int type = 10)
 {
 	switch (type)
 	{
@@ -21,10 +22,8 @@ Package::Package(int type)
 		case TYPE_LARGE_PACK:
 			this->preparePackage(TYPE_LARGE_PACK, 40, 20, 80);
 			break;
-		case TYPE_RANDOM:
-			this->prepareRandomPackage();
-			break;
 		default:
+			this->prepareRandomPackage();
 			break;
 
 	}
@@ -37,6 +36,7 @@ Package::~Package()
 void Package::preparePackage(int typeId, float size, float weight, float prize)
 {
 	this->setTypeId(typeId);
+	//this->setHouseId(houseId);
 	this->setPrize(prize);
 	this->setSize(size);
 	this->setWeight(weight);
@@ -72,9 +72,9 @@ void Package::setDeliveryDate(int deliveryDate)
 	this->deliveryDate = deliveryDate;
 }
 
-void Package::setDeliveryAdress(string deliveryAdress)
+void Package::setHouseId(int houseId)
 {
-	this->deliveryAdress = deliveryAdress;
+	this->houseId = houseId;
 }
 
 void Package::setDelivered(bool delivered)

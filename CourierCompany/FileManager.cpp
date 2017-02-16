@@ -65,3 +65,13 @@ void FileManager::LoadVehicleList()
 {
 
 }
+
+void FileManager::LoadRoadList()
+{
+
+}
+
+void FileManager::LoadHouseList()
+{
+
+}
