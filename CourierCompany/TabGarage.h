@@ -26,6 +26,7 @@ protected:
 	DECLARE_MESSAGE_MAP()
 public:
 	void CompleteVehicleList();
+	void CompletePlayerVehicleList();
 	void AppendPlayerVehicleList(string vehicleName);
 	CListCtrl vehicleListCtrl;
 	afx_msg void BuyChangeClick();

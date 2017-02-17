@@ -26,10 +26,12 @@ protected:
 public:
 	CString startDataNick;
 	string GetUserName();
+	bool wasLoaded();
 	void SetUserName(string playerName);
 
 private:
 	string playerName;
+	bool loaded=FALSE;
 public:
 	afx_msg void StartGameOnClickBtn();
 	CEdit playerNick;

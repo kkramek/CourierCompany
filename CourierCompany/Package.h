@@ -27,6 +27,7 @@ public:
 	int getDeliveryDate();
 	int getHouseId();
 	bool getDelivered();
+	string getType();
 
 	//Constants values of package type
 	static const int TYPE_MAIL = 1;

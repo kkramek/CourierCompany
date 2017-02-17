@@ -140,3 +140,48 @@ void Package::setDelivered(bool delivered)
 {
 	this->delivered = delivered;
 }
+
+float Package::getSize()
+{
+	return size;
+}
+float Package::getWeight()
+{
+	return weight;
+}
+int Package::getPrize()
+{
+	return prize;
+}
+int Package::getDeliveryDate()
+{
+	return deliveryDate;
+}
+int Package::getHouseId()
+{
+	return houseId;
+}
+bool Package::getDelivered()
+{
+	return delivered;
+}
+string Package::getType()
+{
+	if (typeId == 1)
+		return string("Mail");
+	else
+	{
+		if (typeId == 2)
+			return string("Small Packet");
+		else
+		{
+			if (typeId == 3)
+				return string("Medium Packet");
+			else
+			{
+				if (typeId == 4)
+					return string("Large Packet");
+			}
+		}
+	}
+}

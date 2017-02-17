@@ -29,6 +29,7 @@ public:
 	void takeFromAccountBalance(int money);
 
 	void appendVehicle(Vehicle *vehicle);
+	void clearVehicleList();
 	vector < Vehicle* > GetVehicleList();
 
 private:

@@ -36,7 +36,13 @@ void CTabGarage::DoDataExchange(CDataExchange* pDX)
 
 	this->CompleteVehicleList();
 
+
 	DDX_Control(pDX, IDC_LIST3, playerVehicleList);
+
+
+	this->CompletePlayerVehicleList();
+
+
 	DDX_Control(pDX, ID_MAXSPEED, MaxSpeedOfSel);
 	DDX_Control(pDX, IDC_MAXCOMBUSTION, MaxCombustionOfSel);
 	DDX_Control(pDX, ID_FUELLEVEL, FuelLevelOfSel);
@@ -80,6 +86,20 @@ void CTabGarage::CompleteVehicleList()
 	}
 
 }
+
+
+void CTabGarage::CompletePlayerVehicleList()
+{
+	Game *game = Game::getInstance();
+	Player *player = game->GetPlayer();
+	vector < Vehicle* > vehiclelist = player->GetVehicleList();
+
+	for (int i = 0; i < vehiclelist.size(); i++)
+	{
+		this->AppendPlayerVehicleList(vehiclelist[i]->GetName());
+	}
+}
+
 
 void CTabGarage::BuyChangeClick()
 {

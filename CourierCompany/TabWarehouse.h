@@ -1,4 +1,5 @@
 #pragma once
+#include "afxcmn.h"
 
 
 // CTabWarehouse dialog
@@ -18,4 +19,12 @@ protected:
 	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV support
 
 	DECLARE_MESSAGE_MAP()
+public:
+	int Charge;
+	afx_msg void OnBnClickedCharge();
+	CListCtrl PackageListTable;
+	CListCtrl VehicleChsrgeList;
+	CListCtrl VehicleChargeList;
+	afx_msg void OnLvnItemchangedVehiclechargelist(NMHDR *pNMHDR, LRESULT *pResult);
+	CListCtrl VehCharList;
 };

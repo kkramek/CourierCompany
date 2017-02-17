@@ -42,9 +42,6 @@
     <ClInclude Include="Player.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Package.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="TabWarehouse.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -87,6 +84,12 @@
     <ClInclude Include="MapLibrary.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="PackageList.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Package.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CourierCompany.cpp">
@@ -99,9 +102,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Player.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Package.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="TabWarehouse.cpp">
@@ -144,6 +144,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="MapLibrary.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PackageList.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Package.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

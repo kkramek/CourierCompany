@@ -14,6 +14,11 @@ Player::~Player()
 {
 }
 
+void Player::clearVehicleList()
+{
+	this->vehicleList.clear();
+}
+
 void Player::appendVehicle(Vehicle *vehicle)
 {
 	this->vehicleList.push_back(vehicle);

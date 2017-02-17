@@ -127,10 +127,13 @@ void CCDlg::StartGame()
 
 	StartWindowDlg startWindow;
 	startWindow.DoModal();
-	string userName = startWindow.GetUserName();
+	if (!startWindow.wasLoaded())
+	{
+		string userName = startWindow.GetUserName();
 
-	game = Game::getInstance();
-	game->SetPlayer(userName);
+		game = Game::getInstance();
+		game->SetPlayer(userName);
+	}
 }
 
 
@@ -181,63 +184,8 @@ void CCDlg::UpdateHeaderData(string playerName, int playerLvl, int playerAccount
 
 void CCDlg::saveAction()
 {
-
-	CFileDialog FileDialog(FALSE, _T("save"), _T("*.save"));
-
-	if (FileDialog.DoModal() == IDOK)
-	{
-		ofstream savefile;
-		savefile.open(Library::ConvertCStringToString(FileDialog.GetPathName()), std::ios::binary);
-		if (savefile.is_open())
-		{
-			string playerName;
-			int playernamelenght;
-			int playerLvl;
-			int playerAccountBalance;
-			vector < Vehicle* > vehicleList;
-
-			Game* game;
-			Player* player;
-			game = Game::getInstance();
-			player = game->GetPlayer();
-
-			playerName = player->getName();
-			playerLvl = player->getLevel();
-			playerAccountBalance = player->getAccountBalance();
-			vehicleList = player->GetVehicleList();
-			playernamelenght = playerName.length();
-
-
-			savefile << playernamelenght;
-			for (int i = 0; i < playernamelenght; i++)
-				savefile << playerName[i];
-			savefile  << playerLvl << '$' << playerAccountBalance << '$' << vehicleList.size() << '$';
-
-			for (unsigned int i = 0; i < vehicleList.size(); i++)
-			{
-				playerName = vehicleList[i]->GetName();
-				playernamelenght = vehicleList[i]->GetName().size();
-				savefile << playernamelenght;
-				for (int j = 0; j < playernamelenght; j++)
-					savefile << playerName[j];
-				savefile << vehicleList[i]->GetPrice() << '$'
-					<< vehicleList[i]->GetSpeed() << '$'
-					<< vehicleList[i]->GetCapacity() << '$'
-					<< vehicleList[i]->GetMaxiPayload() << '$'
-					<< vehicleList[i]->GetFuelCapacity() << '$'
-					<< vehicleList[i]->GetFuelLevel() << '$'
-					<< vehicleList[i]->GetCombustion() << '$';
-			}
-
-			savefile.close();
-		}
-		else
-		{
-			MessageBox(_T("Access danied"), _T("Error"),
-				MB_ICONERROR | MB_OK);
-		}
-	}
-
+	FileManager* fileManager = new FileManager();
+	fileManager->SaveGame();
 }
 
 

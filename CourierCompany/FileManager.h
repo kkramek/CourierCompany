@@ -12,8 +12,8 @@ public:
 	FileManager();
 	~FileManager();
 
-	void SaveGame();
-	void LoadGame();
+	bool SaveGame();
+	bool LoadGame();
 	void LoadVehicleList();
 	void LoadRoadList();
 	void LoadHouseList();
