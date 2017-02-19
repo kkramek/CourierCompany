@@ -34,17 +34,17 @@ void Player::setLevel(int level)
 	this->level = level;
 }
 
-void Player::setAccountBalance(float accountBalance)
+void Player::setAccountBalance(int accountBalance)
 {
 	this->accountBalance = accountBalance;
 }
 
-void Player::addToAccountBalance(float money)
+void Player::addToAccountBalance(int money)
 {
 	this->accountBalance = this->accountBalance + money;
 }
 
-void Player::takeFromAccountBalance(float money)
+void Player::takeFromAccountBalance(int money)
 {
 	this->accountBalance = this->accountBalance - money;
 }
@@ -59,7 +59,7 @@ int Player::getLevel()
 	return this->level;
 }
 
-float Player::getAccountBalance()
+int Player::getAccountBalance()
 {
 	return this->accountBalance;
 }

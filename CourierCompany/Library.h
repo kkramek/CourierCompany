@@ -11,6 +11,8 @@ public:
 	~Library();
 	static string ConvertCStringToString(CString cString);
 	static CString ConvertStringToCString(string cString);
+	static string CStrToStr(CString cString);
+	static CString StrToCStr(string cString);
 
 };
 

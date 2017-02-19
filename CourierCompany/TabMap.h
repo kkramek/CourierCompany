@@ -16,6 +16,9 @@ public:
 
 protected:
 	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV support
+	virtual BOOL OnInitDialog();
+	afx_msg void OnPaint();
+	void DrawMap(CPaintDC & X);
 
 	DECLARE_MESSAGE_MAP()
 };

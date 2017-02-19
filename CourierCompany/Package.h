@@ -17,7 +17,7 @@ public:
 	void setWeight(float weight);
 	void setPrize(float prize);
 	void setDeliveryDate(int deliveryDate);
-	void setDeliveryAdress(string deliveryAdress);
+	void setHouseId(int houseId);
 	void setDelivered(bool delivered);
 
 	//Getters
@@ -25,7 +25,7 @@ public:
 	float getWeight();
 	float getPrize();
 	int getDeliveryDate();
-	string getDeliveryAdress();
+	int getHouseId();
 	bool getDelivered();
 
 	//Constants values of package type
@@ -33,8 +33,6 @@ public:
 	static const int TYPE_SMALL_PACK = 2;
 	static const int TYPE_MEDIUM_PACK = 3;
 	static const int TYPE_LARGE_PACK = 4;
-	static const int TYPE_RANDOM = 5;
-
 
 private:
 	int typeId;
@@ -43,7 +41,7 @@ private:
 	float weight;
 	float prize;
 	int deliveryDate;
-	string deliveryAdress;
+	int houseId;
 	bool delivered;
 
 	void preparePackage(int typeId, float size, float weight, float prize);
