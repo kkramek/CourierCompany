@@ -101,13 +101,18 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="House.h" />
+    <ClInclude Include="Coordinates.h" />
     <ClInclude Include="FileManager.h" />
+    <ClInclude Include="MapLibrary.h" />
+    <ClInclude Include="Package.h" />
+    <ClInclude Include="PackageList.h" />
+    <ClInclude Include="Road.h" />
     <ClInclude Include="Vehicle.h" />
     <ClInclude Include="CourierCompany.h" />
     <ClInclude Include="CourierCompanyDlg.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Library.h" />
-    <ClInclude Include="Package.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="StartWindowDlg.h" />
@@ -120,13 +125,18 @@
     <ClInclude Include="VehicleLibrary.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="House.cpp" />
+    <ClCompile Include="Coordinates.cpp" />
     <ClCompile Include="FileManager.cpp" />
+    <ClCompile Include="MapLibrary.cpp" />
+    <ClCompile Include="Package.cpp" />
+    <ClCompile Include="PackageList.cpp" />
+    <ClCompile Include="Road.cpp" />
     <ClCompile Include="Vehicle.cpp" />
     <ClCompile Include="CourierCompany.cpp" />
     <ClCompile Include="CourierCompanyDlg.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Library.cpp" />
-    <ClCompile Include="Package.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="StartWindowDlg.cpp" />
     <ClCompile Include="stdafx.cpp">
@@ -143,10 +153,10 @@
     <ResourceCompile Include="CourierCompany.rc" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="ClassDiagram.cd" />
     <None Include="res\CourierCompany.rc2" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="..\..\..\..\Desktop\bitmap1.bmp" />
     <Image Include="res\bitmap2.bmp" />
     <Image Include="res\CourierCompany.ico" />
   </ItemGroup>

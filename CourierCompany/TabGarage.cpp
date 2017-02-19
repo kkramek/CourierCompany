@@ -36,19 +36,27 @@ void CTabGarage::DoDataExchange(CDataExchange* pDX)
 
 	this->CompleteVehicleList();
 
+
 	DDX_Control(pDX, IDC_LIST3, playerVehicleList);
+
+
+	this->CompletePlayerVehicleList();
+
+
 	DDX_Control(pDX, ID_MAXSPEED, MaxSpeedOfSel);
 	DDX_Control(pDX, IDC_MAXCOMBUSTION, MaxCombustionOfSel);
 	DDX_Control(pDX, ID_FUELLEVEL, FuelLevelOfSel);
 	DDX_Control(pDX, ID_MAXCAPACITY, MaxCapacityOfSel);
 	DDX_Control(pDX, ID_MAXPAYLOAD, MaxPayloadOfSel);
 	DDX_Control(pDX, ID_MAXFUELLEVEL, MaxFuelLevelOfSel);
+	DDX_Control(pDX, IDC_GETFUEL, GetFuel);
 }
 
 
 BEGIN_MESSAGE_MAP(CTabGarage, CDialogEx)
 	ON_BN_CLICKED(IDC_BUTTON1, &CTabGarage::BuyChangeClick)
 	ON_LBN_SELCHANGE(IDC_LIST3, &CTabGarage::OnLbnSelchangeList3)
+	ON_BN_CLICKED(IDC_GETFUEL, &CTabGarage::OnBnClickedGetfuel)
 END_MESSAGE_MAP()
 
 
@@ -72,12 +80,26 @@ void CTabGarage::CompleteVehicleList()
 		vehicleListCtrl.SetItemText(nIndex, 3, Library::StrToCStr(to_string((*iter)->GetCapacity())));
 		vehicleListCtrl.SetItemText(nIndex, 4, Library::StrToCStr(to_string((*iter)->GetMaxiPayload())));
 		vehicleListCtrl.SetItemText(nIndex, 5, Library::StrToCStr(to_string((*iter)->GetCombustion())));
-		vehicleListCtrl.SetItemText(nIndex, 6, Library::StrToCStr(to_string((*iter)->GetFuelLevel())));
+		vehicleListCtrl.SetItemText(nIndex, 6, Library::StrToCStr(to_string((*iter)->GetFuelCapacity())));
 
 
 	}
 
 }
+
+
+void CTabGarage::CompletePlayerVehicleList()
+{
+	Game *game = Game::getInstance();
+	Player *player = game->GetPlayer();
+	vector < Vehicle* > vehiclelist = player->GetVehicleList();
+
+	for (int i = 0; i < vehiclelist.size(); i++)
+	{
+		this->AppendPlayerVehicleList(vehiclelist[i]->GetName());
+	}
+}
+
 
 void CTabGarage::BuyChangeClick()
 {
@@ -138,4 +160,32 @@ void CTabGarage::OnLbnSelchangeList3()
 	MaxCapacityOfSel.SetWindowText(Library::ConvertStringToCString(to_string(vehicle->GetCapacity())));
 	MaxPayloadOfSel.SetWindowText(Library::ConvertStringToCString(to_string(vehicle->GetMaxiPayload())));
 	MaxFuelLevelOfSel.SetWindowText(Library::ConvertStringToCString(to_string(vehicle->GetFuelCapacity())));
+}
+
+
+void CTabGarage::OnBnClickedGetfuel()
+{
+	float fuelprice = 4.0;
+	UINT uiSelection = playerVehicleList.GetCurSel();
+	if (uiSelection != -1) 
+	{
+		Game *game;
+		Player *player;
+		vector < Vehicle* > vehicleList;
+		Vehicle* vehicle;
+
+		game = Game::getInstance();
+		player = game->GetPlayer();
+		vehicleList = player->GetVehicleList();
+		vehicle = vehicleList[uiSelection];
+
+		int fuelcost = int(((vehicle->GetFuelCapacity()) - (vehicle->GetFuelLevel()))*fuelprice);
+
+		if (fuelcost < player->getAccountBalance())
+		{
+			player->takeFromAccountBalance(fuelcost);
+			vehicle->SetFuelLevel(vehicle->GetFuelCapacity());
+			FuelLevelOfSel.SetWindowText(Library::ConvertStringToCString(to_string(vehicle->GetFuelLevel())));
+		}
+	}
 }

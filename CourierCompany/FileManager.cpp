@@ -1,5 +1,11 @@
 #include "stdafx.h"
 #include "FileManager.h"
+#include "afxdialogex.h"
+#include "CourierCompany.h"
+#include "StartWindowDlg.h"
+#include "Library.h"
+#include <fstream>
+#include <iostream>
 
 
 FileManager::FileManager()
@@ -12,56 +18,157 @@ FileManager::~FileManager()
 }
 
 //TODO: Stworzyæ funkcje zapisuj¹c¹ stan gry do pliku
-void FileManager::SaveGame()
+bool FileManager::SaveGame()
 {
-	/*
-		Ogólnie masz za zadanie pobieraæ wszystkie elementy gry i zapisywaæ je do pliku .bin
-		Strukture pliku musisz sobie tak przemyœleæ ¿ebyœ potem nie mia³ problemu ze zrobieniem 
-		funkcji odczytu stanu gry. Narazie skup siê na tych danych które Ci wy¿ej wymieni³em. 
-		Jak ju¿ bêdzie dzia³aæ to bêdê Ci podsy³a³ kolejne elementy o które masz rozbudowaæ t¹ klasê.
-	*/
+	CFileDialog FileDialog(FALSE, _T("save"), _T("*.save"));
 
-	//Tak siê pobiera nadrzêdy obiekt Game. Ta klasa ma wszystkie potrzebe Ci dane
-	Game* game = Game::getInstance();
+	if (FileDialog.DoModal() == IDOK)
+	{
+		ofstream savefile;
+		savefile.open(Library::ConvertCStringToString(FileDialog.GetPathName()), std::ios::binary);
+		if (savefile.is_open())
+		{
+			string playerName;
+			int playernamelenght;
+			int playerLvl;
+			int playerAccountBalance;
+			vector < Vehicle* > vehicleList;
 
-	//Jak chcesz pobraæ gracza to wyci¹gasz go z obiektu Game w ten sposób:
-	Player* player = game->GetPlayer();
+			Game* game;
+			Player* player;
+			game = Game::getInstance();
+			player = game->GetPlayer();
 
-	//Jak chcesz pobraæ kolejne atrybuty gracza robisz tak:
-	string playerName = player->getName();
-	int playerLvl = player->getLevel();
-	int playerAccountBalance = player->getAccountBalance();
+			playerName = player->getName();
+			playerLvl = player->getLevel();
+			playerAccountBalance = player->getAccountBalance();
+			vehicleList = player->GetVehicleList();
+			playernamelenght = playerName.length();
 
-	//Jak chcesz pobraæ listê pojazdów robisz tak:
-	vector < Vehicle* > vehicleList = player->GetVehicleList();
+
+			savefile << playernamelenght;
+			for (int i = 0; i < playernamelenght; i++)
+				savefile << playerName[i];
+			savefile << playerLvl << '$' << playerAccountBalance << '$' << vehicleList.size() << '$';
+
+			for (unsigned int i = 0; i < vehicleList.size(); i++)
+			{
+				playerName = vehicleList[i]->GetName();
+				playernamelenght = vehicleList[i]->GetName().size();
+				savefile << playernamelenght;
+				for (int j = 0; j < playernamelenght; j++)
+					savefile << playerName[j];
+				savefile << vehicleList[i]->GetPrice() << '$'
+					<< vehicleList[i]->GetSpeed() << '$'
+					<< vehicleList[i]->GetCapacity() << '$'
+					<< vehicleList[i]->GetMaxiPayload() << '$'
+					<< vehicleList[i]->GetFuelCapacity() << '$'
+					<< vehicleList[i]->GetFuelLevel() << '$'
+					<< vehicleList[i]->GetCombustion() << '$';
+			}
+
+			savefile.close();
+			return TRUE;
+		}
+	}
+	return FALSE;
 }
 
 //TODO: Stworzyæ funkcje wczytuj¹c¹ stan gry
-void FileManager::LoadGame()
+bool FileManager::LoadGame()
 {
-	/*
-		Wczytujesz ten swój plik .bin i uzupe³niasz kolejno dane w odpowiednich klasach
-	*/
+	CFileDialog FileDialog(TRUE, _T("save"), _T("*.save"));
 
-	//Znowu pobierasz obiekt Game (W przypadku braku obiektu getInstance go sobie utworzy)
-	Game* game = Game::getInstance();
+	if (FileDialog.DoModal() == IDOK)
+	{
+		CString PathName = FileDialog.GetPathName();
+		ifstream loadfile;
+		loadfile.open(Library::ConvertCStringToString(PathName), ios::binary);
+		if (loadfile.is_open())
+		{
+			string name;
+			int namelenght;
+			int money;
+			int lvl;
+			char temp;
+			char dollar;
+			loadfile >> namelenght;
+			for (int i = 0; i < namelenght; i++)
+			{
+				loadfile >> temp;
+				name += temp;
+			}
+			loadfile >> lvl >> dollar >> money >> dollar;
 
-	//Tworzysz gracza
-	game->SetPlayer("Podajesz jako parmetr nick gracza");
+			Game* game = Game::getInstance();
 
-	//Pobierasz utworzonego gracza ¿eby mieæ dostêp do jego metod
-	Player* player = game->GetPlayer();
+			game->SetPlayer(name);
 
-	//I jak chcesz mu uzupe³niæ dane to robisz to w ten sposób:
-	player->setLevel(1);
-	player->setAccountBalance(100);
+			Player* player = game->GetPlayer();
 
-	//Jak chcsz dodaæ pojzd to analogicznie tylko musisz utworzyæ obiekt  
-	//player->appendVehicle(Vehicle);
 
+			player->setLevel(lvl);
+			player->setAccountBalance(money);
+
+			string vehiclename;
+			int vehiclenamelenght;
+			float vehiclespeed;
+			int vehicleprice;
+			float vehiclecapacity;
+			float vehiclemaxiPayload;
+			float vehiclefuelLevel;
+			float vehiclecombustion;
+			float vehiclefuelCapacity;
+
+			int vehicleamount;
+			loadfile >> vehicleamount >> dollar;
+
+			player->clearVehicleList();
+			Vehicle *vehicle;
+
+			for (int j = 0; j < vehicleamount; j++)
+			{
+				vehiclename.erase();
+				loadfile >> vehiclenamelenght;
+				for (int i = 0; i < vehiclenamelenght; i++)
+				{
+					loadfile >> temp;
+					vehiclename += temp;
+				}
+				loadfile >> vehicleprice >> dollar
+					>> vehiclespeed >> dollar
+					>> vehiclecapacity >> dollar
+					>> vehiclemaxiPayload >> dollar
+					>> vehiclefuelCapacity >> dollar
+					>> vehiclefuelLevel >> dollar
+					>> vehiclecombustion >> dollar;
+
+				
+				vehicle = new Vehicle(vehiclename, vehiclespeed, vehicleprice, vehiclecapacity, vehiclemaxiPayload, vehiclecombustion, vehiclefuelCapacity);
+				player->appendVehicle(vehicle);
+				/*	MessageBox(Library::ConvertStringToCString(vehiclename), _T("TEST"),
+				MB_ICONERROR | MB_OK);*/
+
+			}
+			loadfile.close();
+
+			return TRUE;
+		}
+	}
+	return FALSE;
 }
 
 void FileManager::LoadVehicleList()
+{
+
+}
+
+void FileManager::LoadRoadList()
+{
+
+}
+
+void FileManager::LoadHouseList()
 {
 
 }

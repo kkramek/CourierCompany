@@ -12,6 +12,7 @@ public:
 
 	vector < Package* > packageList;
 
-	void AppendPackage(Package package);
+	void AppendPackage(Package *package);
+	void GetNewPackages(int packagesNumber);
 };
 

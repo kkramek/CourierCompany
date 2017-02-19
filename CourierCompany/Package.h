@@ -15,37 +15,36 @@ public:
 	void setTypeId(int typeId);
 	void setSize(float size);
 	void setWeight(float weight);
-	void setPrize(float prize);
+	void setPrize(int prize);
 	void setDeliveryDate(int deliveryDate);
-	void setDeliveryAdress(string deliveryAdress);
+	void setHouseId(int houseId);
 	void setDelivered(bool delivered);
 
 	//Getters
 	float getSize();
 	float getWeight();
-	float getPrize();
+	int getPrize();
 	int getDeliveryDate();
-	string getDeliveryAdress();
+	int getHouseId();
 	bool getDelivered();
+	string getType();
 
 	//Constants values of package type
 	static const int TYPE_MAIL = 1;
 	static const int TYPE_SMALL_PACK = 2;
 	static const int TYPE_MEDIUM_PACK = 3;
 	static const int TYPE_LARGE_PACK = 4;
-	static const int TYPE_RANDOM = 5;
-
 
 private:
 	int typeId;
 
 	float size;
 	float weight;
-	float prize;
+	int prize;
 	int deliveryDate;
-	string deliveryAdress;
+	int houseId;
 	bool delivered;
 
-	void preparePackage(int typeId, float size, float weight, float prize);
+	void preparePackage(int typeId, float size, float weight, int prize, int houseId);
 	void prepareRandomPackage();
 };
