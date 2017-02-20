@@ -19,6 +19,8 @@ protected:
 	virtual BOOL OnInitDialog();
 	afx_msg void OnPaint();
 	void DrawMap(CPaintDC & X);
+	void LevelUP();
 
 	DECLARE_MESSAGE_MAP()
+
 };

@@ -10,7 +10,6 @@
 #include "StartWindowDlg.h"
 #include "Library.h"
 #include "afxwin.h"
-#include <fstream>
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -78,7 +77,6 @@ BOOL CCDlg::OnInitDialog()
 	m_tabMenu.Init();
 
 	AfxBeginThread(SetHeaderUserData, (LPVOID)this);
-
 	return TRUE;  // return TRUE  unless you set the focus to a control
 }
 

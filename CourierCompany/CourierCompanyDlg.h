@@ -58,4 +58,5 @@ public:
 	afx_msg void OnStnClickedWindowSplit();
 	afx_msg void OnStnClickedEdit1();
 	CButton SaveGame;
+
 };

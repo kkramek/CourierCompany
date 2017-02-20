@@ -71,7 +71,7 @@ void StartWindowDlg::StartGameOnClickBtn()
 	nickString = Library::ConvertCStringToString(nick);
 
 	if (nickString[0] == '\0') {
-		MessageBox(_T("Entered nick is wrong. Please try again"), _T("Error"),
+	MessageBox(_T("Entered nick is wrong. Please try again"), _T("Error"),
 			MB_ICONERROR | MB_OK);
 	}
 	else {

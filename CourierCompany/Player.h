@@ -20,10 +20,14 @@ public:
 	int getAccountBalance();
 	float GetMAXICapacityofallcars();
 	float GetMaxiPayloadofallcars();
+	int GetDeliveredPackages();
+	int GetUpgradePoints();
 
 	void setName(string name);
 	void setLevel(int level);
+	void SetUpgradePoints(int upgradepoints);
 	void setAccountBalance(int accountBalance);
+	void SetDeliveredPackages(int deliveredpackages);
 
 	void addToAccountBalance(int money);
 	void takeFromAccountBalance(int money);
@@ -37,7 +41,9 @@ private:
 	string courierType;
 	int level;
 	int accountBalance;
+	int deliveredPackages;
 	vector < Vehicle* > vehicleList;
+	int UpgradePoints;
 
 
 };
