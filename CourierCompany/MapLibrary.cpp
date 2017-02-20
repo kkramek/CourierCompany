@@ -27,7 +27,6 @@ MapLibrary * MapLibrary::GetInstance() {
 
 int MapLibrary::GetRandomHouse()
 {
-	srand(time(NULL));
 	return (std::rand() % houseList.size());
 }
 

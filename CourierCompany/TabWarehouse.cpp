@@ -55,7 +55,7 @@ END_MESSAGE_MAP()
 
 void CTabWarehouse::OnBnClickedCharge()
 {
-	srand(time(NULL));
+
 
 	int packagesamount = rand() % 7 + 8;  // from 8 to 14
 	PackageList *packagelist = new PackageList;
