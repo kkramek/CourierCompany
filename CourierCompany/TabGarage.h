@@ -41,4 +41,12 @@ public:
 	CStatic MaxFuelLevelOfSel;
 	CButton GetFuel;
 	afx_msg void OnBnClickedGetfuel();
+	CButton PlusOneSpeed;
+	afx_msg void OnBnClickedPlus1speed();
+	CButton PlusOneCapacity;
+	afx_msg void OnBnClickedPlus1capacity();
+	CButton PlusOnePayload;
+	afx_msg void OnBnClickedPlus1payload();
+	CButton PlusOneFuel;
+	afx_msg void OnBnClickedPlus1fuel();
 };

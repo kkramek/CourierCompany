@@ -55,8 +55,6 @@ END_MESSAGE_MAP()
 
 void CTabWarehouse::OnBnClickedCharge()
 {
-
-
 	int packagesamount = rand() % 7 + 8;  // from 8 to 14
 	PackageList *packagelist = new PackageList;
 	packagelist->GetNewPackages(packagesamount);
@@ -68,5 +66,7 @@ void CTabWarehouse::OnBnClickedCharge()
 		PackageListTable.SetItemText(nIndex, 2, Library::StrToCStr(to_string(packagelist->packageList[i]->getPrize())));
 		PackageListTable.SetItemText(nIndex, 3, Library::StrToCStr(to_string(packagelist->packageList[i]->getHouseId())));
 	}
+	MessageBox((Library::StrToCStr("PackageList[0].size() = " + to_string(packagelist->packageList[2]->getSize()))), _T("Test"),
+		MB_ICONINFORMATION | MB_OK);
 }
 

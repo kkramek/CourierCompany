@@ -3,6 +3,7 @@
 
 #include "stdafx.h"
 #include "CourierCompany.h"
+#include "CourierCompanyDlg.h"
 #include "TabGarage.h"
 #include "afxdialogex.h"
 #include <sstream>
@@ -50,6 +51,10 @@ void CTabGarage::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, ID_MAXPAYLOAD, MaxPayloadOfSel);
 	DDX_Control(pDX, ID_MAXFUELLEVEL, MaxFuelLevelOfSel);
 	DDX_Control(pDX, IDC_GETFUEL, GetFuel);
+	DDX_Control(pDX, IDC_PLUS1SPEED, PlusOneSpeed);
+	DDX_Control(pDX, IDC_PLUS1CAPACITY, PlusOneCapacity);
+	DDX_Control(pDX, IDC_PLUS1PAYLOAD, PlusOnePayload);
+	DDX_Control(pDX, IDC_PLUS1FUEL, PlusOneFuel);
 }
 
 
@@ -57,6 +62,10 @@ BEGIN_MESSAGE_MAP(CTabGarage, CDialogEx)
 	ON_BN_CLICKED(IDC_BUTTON1, &CTabGarage::BuyChangeClick)
 	ON_LBN_SELCHANGE(IDC_LIST3, &CTabGarage::OnLbnSelchangeList3)
 	ON_BN_CLICKED(IDC_GETFUEL, &CTabGarage::OnBnClickedGetfuel)
+	ON_BN_CLICKED(IDC_PLUS1SPEED, &CTabGarage::OnBnClickedPlus1speed)
+	ON_BN_CLICKED(IDC_PLUS1CAPACITY, &CTabGarage::OnBnClickedPlus1capacity)
+	ON_BN_CLICKED(IDC_PLUS1PAYLOAD, &CTabGarage::OnBnClickedPlus1payload)
+	ON_BN_CLICKED(IDC_PLUS1FUEL, &CTabGarage::OnBnClickedPlus1fuel)
 END_MESSAGE_MAP()
 
 
@@ -132,7 +141,6 @@ void CTabGarage::BuyChangeClick()
 				MB_ICONERROR | MB_OK);
 		}
 	}
-
 }
 
 void CTabGarage::AppendPlayerVehicleList(string vehicleName)
@@ -186,6 +194,130 @@ void CTabGarage::OnBnClickedGetfuel()
 			player->takeFromAccountBalance(fuelcost);
 			vehicle->SetFuelLevel(vehicle->GetFuelCapacity());
 			FuelLevelOfSel.SetWindowText(Library::ConvertStringToCString(to_string(vehicle->GetFuelLevel())));
+		}
+	}
+}
+
+
+void CTabGarage::OnBnClickedPlus1speed()
+{
+	UINT uiSelection = playerVehicleList.GetCurSel();
+	if (uiSelection != -1)
+	{
+		Game *game;
+		Player *player;
+		vector < Vehicle* > vehicleList;
+		Vehicle* vehicle;
+
+		game = Game::getInstance();
+		player = game->GetPlayer();
+		vehicleList = player->GetVehicleList();
+		vehicle = vehicleList[uiSelection];
+
+		if (player->GetUpgradePoints()>0)
+		{
+			if(!(vehicle->GetSpeed()==0.0))
+				player->SetUpgradePoints(player->GetUpgradePoints() - 1);
+			vehicle->SetSpeed(vehicle->GetSpeed()*1.1);
+			MaxSpeedOfSel.SetWindowText(Library::ConvertStringToCString(to_string(vehicle->GetSpeed())));
+		}
+		else
+		{
+			MessageBox(_T("You don't have upgrade points."), _T("Error"),
+				MB_ICONERROR | MB_OK);
+		}
+	}
+}
+
+
+void CTabGarage::OnBnClickedPlus1capacity()
+{
+	UINT uiSelection = playerVehicleList.GetCurSel();
+	if (uiSelection != -1)
+	{
+		Game *game;
+		Player *player;
+		vector < Vehicle* > vehicleList;
+		Vehicle* vehicle;
+
+		game = Game::getInstance();
+		player = game->GetPlayer();
+		vehicleList = player->GetVehicleList();
+		vehicle = vehicleList[uiSelection];
+
+		if (player->GetUpgradePoints()>0)
+		{
+			if (!(vehicle->GetCapacity() == 0.0))
+				player->SetUpgradePoints(player->GetUpgradePoints() - 1);
+			vehicle->SetCapacity(vehicle->GetCapacity()*1.1);
+			MaxCapacityOfSel.SetWindowText(Library::ConvertStringToCString(to_string(vehicle->GetCapacity())));
+		}
+		else
+		{
+			MessageBox(_T("You don't have upgrade points."), _T("Error"),
+				MB_ICONERROR | MB_OK);
+		}
+	}
+}
+
+
+void CTabGarage::OnBnClickedPlus1payload()
+{
+	UINT uiSelection = playerVehicleList.GetCurSel();
+	if (uiSelection != -1)
+	{
+		Game *game;
+		Player *player;
+		vector < Vehicle* > vehicleList;
+		Vehicle* vehicle;
+
+		game = Game::getInstance();
+		player = game->GetPlayer();
+		vehicleList = player->GetVehicleList();
+		vehicle = vehicleList[uiSelection];
+
+		if (player->GetUpgradePoints()>0)
+		{
+			if (!(vehicle->GetMaxiPayload() == 0.0))
+				player->SetUpgradePoints(player->GetUpgradePoints() - 1);
+			vehicle->SetMaxiPayload(vehicle->GetMaxiPayload()*1.1);
+			MaxPayloadOfSel.SetWindowText(Library::ConvertStringToCString(to_string(vehicle->GetMaxiPayload())));
+		}
+		else
+		{
+			MessageBox(_T("You don't have upgrade points."), _T("Error"),
+				MB_ICONERROR | MB_OK);
+		}
+	}
+}
+
+
+void CTabGarage::OnBnClickedPlus1fuel()
+{
+	UINT uiSelection = playerVehicleList.GetCurSel();
+	if (uiSelection != -1)
+	{
+		Game *game;
+		Player *player;
+		vector < Vehicle* > vehicleList;
+		Vehicle* vehicle;
+
+		game = Game::getInstance();
+		player = game->GetPlayer();
+		vehicleList = player->GetVehicleList();
+		vehicle = vehicleList[uiSelection];
+
+		if (player->GetUpgradePoints()>0)
+		{
+			if (!(vehicle->GetFuelCapacity() == 0.0))
+				player->SetUpgradePoints(player->GetUpgradePoints() - 1);
+			vehicle->SetFuelCapacity(vehicle->GetFuelCapacity()*1.1);
+			MaxFuelLevelOfSel.SetWindowText(Library::ConvertStringToCString(to_string(vehicle->GetFuelCapacity())));
+		}
+		else
+		{
+			MessageBox(_T("You don't have upgrade points."), _T("Error"),
+				MB_ICONERROR | MB_OK);
 		}
 	}
 }

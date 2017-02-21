@@ -4,6 +4,7 @@
 #include "stdafx.h"
 #include "CourierCompany.h"
 #include "TabMenu.h"
+#include "CourierCompanyDlg.h"
 
 #include "TabGarage.h"
 #include "TabWarehouse.h"

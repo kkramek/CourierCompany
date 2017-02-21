@@ -18,6 +18,7 @@ Game * Game::getInstance() {
 	if (!instance) {
 		srand(time(NULL));
 		instance = new Game();
+		srand(time(NULL));
 	};
 
 	return instance;
