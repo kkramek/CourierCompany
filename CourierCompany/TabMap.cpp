@@ -5,6 +5,7 @@
 #include "CourierCompany.h"
 #include "TabMap.h"
 #include "afxdialogex.h"
+#include "Game.h"
 
 
 // CTabMap dialog
@@ -59,3 +60,15 @@ void CTabMap::DrawMap(CPaintDC & X)
 	//X.LineTo(200, 200);
 }
 ///////////////////////////////////
+void CTabMap::LevelUP()
+{
+	Game *game = Game::getInstance();
+	Player * player = game->GetPlayer();
+	if ((player->getLevel()) < ((player->GetDeliveredPackages() / 100) + 1))
+	{
+		player->setLevel(player->getLevel() + 1);
+		player->SetUpgradePoints(player->GetUpgradePoints() + 10);
+		MessageBox(_T("You've reached the next level. Go to garage and use 10 points to upgrade your vehicles"), _T("LEVEL UP"),
+			MB_ICONINFORMATION | MB_OK);
+	}
+}

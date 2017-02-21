@@ -48,8 +48,6 @@ void Package::preparePackage(int typeId, float size, float weight, int prize, in
 
 void Package::prepareRandomPackage()
 {
-	srand(time(NULL));
-
 	Game *game = Game::getInstance();;
 	Player *player = game->GetPlayer();
 	MapLibrary *maplibrary = MapLibrary::GetInstance();

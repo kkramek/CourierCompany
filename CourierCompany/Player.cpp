@@ -8,6 +8,8 @@ Player::Player(string name)
 	this->setName(name);
 	this->setLevel(1);
 	this->setAccountBalance(1000000);
+	this->SetDeliveredPackages(0);
+	this->SetUpgradePoints(2);
 }
 
 Player::~Player()
@@ -99,4 +101,24 @@ float Player::GetMaxiPayloadofallcars()
 	}
 	else
 		return 0.0;
+}
+
+int Player::GetDeliveredPackages()
+{
+	return this->deliveredPackages;
+}
+
+void Player::SetDeliveredPackages(int deliveredpackages)
+{
+	deliveredPackages = deliveredpackages;
+}
+
+int Player::GetUpgradePoints()
+{
+	return this->UpgradePoints;
+}
+
+void Player::SetUpgradePoints(int upgradepoints)
+{
+	UpgradePoints = upgradepoints;
 }

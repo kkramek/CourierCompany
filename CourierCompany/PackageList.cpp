@@ -18,6 +18,11 @@ void PackageList::AppendPackage(Package *package)
 
 void PackageList::GetNewPackages(int packagesNumber)
 {
+	Package *package;
 	for (int i = 0; i < packagesNumber; i++)
-		this->AppendPackage(new Package(10));
+	{
+		package = new Package(10);
+		this->AppendPackage(package);
+	}
+		
 }
