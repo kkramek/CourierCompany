@@ -5,6 +5,7 @@
 #include <vector>
 #include "stdafx.h"
 #include "Vehicle.h"
+#include "PackageList.h"
 
 using namespace std;
 
@@ -35,6 +36,7 @@ public:
 	void appendVehicle(Vehicle *vehicle);
 	void clearVehicleList();
 	vector < Vehicle* > GetVehicleList();
+	PackageList packagelist;
 
 private:
 	string name;

@@ -1,5 +1,17 @@
-﻿  TabWarehouse.cpp
-  TabMap.cpp
+﻿  CourierCompany.cpp
   Generating Code...
-  CourierCompany.vcxproj -> C:\Users\ja\CC\CourierCompany\Debug\CourierCompany.exe
-  CourierCompany.vcxproj -> C:\Users\ja\CC\CourierCompany\Debug\CourierCompany.pdb (Full PDB)
+  Skipping... (no relevant changes detected)
+  VehicleLibrary.cpp
+  Vehicle.cpp
+  TabWarehouse.cpp
+  TabMenu.cpp
+  TabMap.cpp
+  TabGarage.cpp
+  StartWindowDlg.cpp
+  Player.cpp
+  Package.cpp
+  Game.cpp
+  FileManager.cpp
+  CourierCompanyDlg.cpp
+  CourierCompany.vcxproj -> C:\Users\KKramek\Desktop\CourierCompany\Debug\CourierCompany.exe
+  CourierCompany.vcxproj -> C:\Users\KKramek\Desktop\CourierCompany\Debug\CourierCompany.pdb (Full PDB)

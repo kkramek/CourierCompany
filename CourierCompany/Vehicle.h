@@ -30,6 +30,7 @@ public:
 	void SetCombustion(float combustion);
 	void SetFuelCapacity(float fuelCapacity);
 
+
 private:
 	int id;
 	string name;

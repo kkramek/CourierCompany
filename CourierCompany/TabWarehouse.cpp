@@ -9,6 +9,8 @@
 #include <ctime>
 #include "PackageList.h"
 #include "Library.h"
+#include "Game.h"
+#include "Player.h"
 
 
 // CTabWarehouse dialog
@@ -41,12 +43,13 @@ void CTabWarehouse::DoDataExchange(CDataExchange* pDX)
 	VehCharList.InsertColumn(0, _T("Vehicle name"), LVCFMT_LEFT, 120);
 	VehCharList.InsertColumn(1, _T("Capacity"), LVCFMT_RIGHT, 80);
 	VehCharList.InsertColumn(2, _T("Payload"), LVCFMT_RIGHT, 80);
-	VehCharList.InsertColumn(3, _T("Delivery addres"), LVCFMT_RIGHT, 150);
+
 }
 
 
 BEGIN_MESSAGE_MAP(CTabWarehouse, CDialogEx)
 	ON_BN_CLICKED(IDC_CHARGE, &CTabWarehouse::OnBnClickedCharge)
+	ON_BN_CLICKED(IDC_CHARGEBUTTON, &CTabWarehouse::OnBnClickedChargebutton)
 END_MESSAGE_MAP()
 
 
@@ -55,8 +58,10 @@ END_MESSAGE_MAP()
 
 void CTabWarehouse::OnBnClickedCharge()
 {
+	Game *game = Game::getInstance();
+	Player *player = game->GetPlayer();
 	int packagesamount = rand() % 7 + 8;  // from 8 to 14
-	PackageList *packagelist = new PackageList;
+	PackageList *packagelist = &player->packagelist;
 	packagelist->GetNewPackages(packagesamount);
 
 	for (unsigned int i = 0; i < packagelist->packageList.size(); i++)
@@ -66,7 +71,33 @@ void CTabWarehouse::OnBnClickedCharge()
 		PackageListTable.SetItemText(nIndex, 2, Library::StrToCStr(to_string(packagelist->packageList[i]->getPrize())));
 		PackageListTable.SetItemText(nIndex, 3, Library::StrToCStr(to_string(packagelist->packageList[i]->getHouseId())));
 	}
-	MessageBox((Library::StrToCStr("PackageList[0].size() = " + to_string(packagelist->packageList[2]->getSize()))), _T("Test"),
-		MB_ICONINFORMATION | MB_OK);
+	this->CompletePlayerVehicleList();
+
 }
 
+
+
+void CTabWarehouse::OnBnClickedChargebutton()
+{
+	
+}
+
+
+void CTabWarehouse::CompletePlayerVehicleList()
+{
+	Game *game = Game::getInstance();
+	Player *player = game->GetPlayer();
+	vector < Vehicle* > vehiclelist = player->GetVehicleList();
+
+	for (unsigned int i = 0; i < vehiclelist.size(); i++)
+	{
+		int nIndex = VehCharList.InsertItem(0, Library::StrToCStr(vehiclelist[i]->GetName()));
+		VehCharList.SetItemText(nIndex, 1, Library::StrToCStr(to_string(vehiclelist[i]->GetCapacity())));
+		VehCharList.SetItemText(nIndex, 2, Library::StrToCStr(to_string(vehiclelist[i]->GetMaxiPayload())));
+	}
+
+	//for (int i = 0; i < vehiclelist.size(); i++)
+	//{
+	//	this->VehCharList(vehiclelist[i]->GetName());
+	//}
+}

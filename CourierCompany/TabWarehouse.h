@@ -11,7 +11,7 @@ class CTabWarehouse : public CDialogEx
 public:
 	CTabWarehouse(CWnd* pParent = NULL);   // standard constructor
 	virtual ~CTabWarehouse();
-
+	void CompletePlayerVehicleList();
 // Dialog Data
 	enum { IDD = IDD_TAB_WAREHOUSE };
 
@@ -27,4 +27,5 @@ public:
 	CListCtrl VehicleChargeList;
 	afx_msg void OnLvnItemchangedVehiclechargelist(NMHDR *pNMHDR, LRESULT *pResult);
 	CListCtrl VehCharList;
+	afx_msg void OnBnClickedChargebutton();
 };
